@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmim.cshtml";
+}
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Sửa Sản Phẩm
+                </div>
+                <div class="card-body card-block">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label class=" form-control-label">Tên Hàng</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="text-input" name="text-input"
+                                       placeholder="Tên Hàng" class="form-control">
+                                <small class="form-text text-muted">Nhập Tên Hàng</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="file-input" class=" form-control-label">Ảnh</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="file" id="file-input" name="file-input"
+                                       class="form-control-file">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="textarea-input" class=" form-control-label">Mô Tả</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <textarea name="textarea-input" id="textarea-input" rows="9"
+                                          placeholder="Mô Tả..." class="form-control"></textarea>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Số Lượng</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="number" id="text-input" name="text-input"
+                                       placeholder="Số Lượng" class="form-control">
+                                <small class="form-text text-muted">Nhập Số Lượng</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="text-input" class=" form-control-label">Giá Tiền</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="number" id="text-input" name="text-input"
+                                       placeholder="Giá Tiền" class="form-control">
+                                <small class="form-text text-muted">Nhập Giá Tiền</small>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="select" class=" form-control-label">Loại Hàng</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <select name="select" id="select" class="form-control">
+                                    <option value="0">Thực Phẩm Nông Sản</option>
+                                    <option value="1">Thực Phẩm Tươi Sống</option>
+                                    <option value="2">Thực Phẩm Khô</option>
+                                    <option value="3">Gia Vị</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer" style="background-color: white; text-align: center;">
+                <button type="submit" class="btn btn-primary btn-lg btn-sm">
+                    <i class="fa fa-dot-circle-o"></i> Submit
+                </button>
+                <button type="reset" class="btn btn-danger btn-sm">
+                    <i class="fa fa-ban"></i> Reset
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

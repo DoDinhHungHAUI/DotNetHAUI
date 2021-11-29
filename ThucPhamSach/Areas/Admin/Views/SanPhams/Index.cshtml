@@ -1,0 +1,142 @@
+﻿@model IEnumerable<ThucPhamSach.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmim.cshtml";
+}
+
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <!-- DATA TABLE -->
+            <h3 class="title-5 m-b-35">Quản lý danh sách hàng</h3>
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+
+                </div>
+                <div class="table-data__tool-right">
+                    <a href="@Url.Action("Create", "SanPhams")" class="au-btn au-btn-icon au-btn--green au-btn--small">
+                        <i class="zmdi zmdi-plus"></i>thêm sản phẩm
+                    </a>
+                </div>
+            </div>
+
+            <div class="table-responsive table-responsive-data2">
+                <table class="table table-data2">
+                    <thead>
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.TenSanPham)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SoLuong)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.GiaBan)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.MoTa)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Anh)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NhaCungCap)
+                            </th>
+
+
+                            <th>Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+                        <tr class="tr-shadow">
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TenSanPham)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SoLuong)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GiaBan)
+                            </td>
+                            <td class="format-text">
+                                @Html.DisplayFor(modelItem => item.MoTa)
+                            </td>
+                            <td>
+                                @{
+                                    string imagePath = "~/wwwroot/Images/" + item.Anh;
+                                }
+                                <img id="output" class="img-thumbnail" alt="ảnh" width="180" height="200" src="@Url.Content(imagePath)" />
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.NhaCungCap)
+                            </td>
+                            <td>
+                                <div class="table-data-feature">
+
+                                    <a href="@Url.Action("Edit" , "SanPhams" ,  new { id = item.MaSP })">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                    </a>
+                                    <a href="@Url.Action("Delete" , "SanPhams" ,  new { id = item.MaSP })">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                            <tr class="spacer"></tr>
+                            @*<tr class="tr-shadow">
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.DanhMucSanPham.TenDanhMuc)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TenSanPham)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MoTa)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NhaCungCap)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.GiaBan)
+                                </td>
+                                <td>
+
+                                    @{
+                                        string imagePath = "~/wwwroot/Images/" + item.Anh;
+                                    }
+
+                                    <img id="output" class="img-thumbnail" alt="ảnh" width="180" height="200" src="@Url.Content(imagePath)" />
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SoLuong)
+                                </td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.MaSP }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.MaSP }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.MaSP })
+                                    </div>
+                                </td>
+                            </tr>*@
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+</div>
+
+

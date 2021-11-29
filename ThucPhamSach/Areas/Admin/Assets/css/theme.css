@@ -192,7 +192,7 @@ strong {
 }
 
 .title-5 {
-    text-transform: capitalize;
+    /*text-transform: capitalize;*/
     font-size: 22px;
     font-weight: 500;
     color: #393939;
@@ -4503,7 +4503,7 @@ section {
     -webkit-border-bottom-left-radius: 3px;
     -moz-border-radius-bottomleft: 3px;
     border-bottom-left-radius: 3px;
-    vertical-align: top;
+   
 }
 
 .table-data2.table tbody tr td:first-child .au-checkbox {

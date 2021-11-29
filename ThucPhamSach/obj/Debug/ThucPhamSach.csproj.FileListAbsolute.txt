@@ -76,4 +76,8 @@ F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\Th
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csproj.CopyComplete
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.pdb
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.dll
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.SqlServer.dll
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.xml
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.SqlServer.xml
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csprojAssemblyReference.cache

@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using Newtonsoft.Json;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using ThucPhamSach.Areas.Admin.Assets.Enum;
 using ThucPhamSach.Models;
 
 namespace ThucPhamSach.Areas.Admin.Controllers
@@ -17,7 +16,14 @@ namespace ThucPhamSach.Areas.Admin.Controllers
         // GET: Admin/SanPhams
         public ActionResult Index()
         {
-            var sanPhams = db.SanPhams.Include(s => s.DanhMucSanPham);
+            var pageSize = Convert.ToInt32(ThucPhamSachEnum.PageSize);
+            var currentPage = 1;
+            var sanPhams = db.SanPhams.Include(s => s.DanhMucSanPham).OrderBy(sp => sp.TenSanPham).Skip(currentPage - 1).Take(pageSize);
+
+            var totalRecord = db.SanPhams.Count();
+            double pageCount = (double)((decimal)totalRecord / Convert.ToDecimal(ThucPhamSachEnum.PageSize));
+            ViewBag.PageCount = (int)Math.Ceiling(pageCount);
+       
             return View(sanPhams.ToList());
         }
 
@@ -34,6 +40,44 @@ namespace ThucPhamSach.Areas.Admin.Controllers
                 return HttpNotFound();
             }
             return View(sanPham);
+        }
+
+        [HttpPost]
+        public ActionResult SearchPaging(string txtSearch , int currentPage = 1)
+        {
+            var pageSize = Convert.ToInt32(ThucPhamSachEnum.PageSize);
+            if (txtSearch != "")
+            {
+                var listSearchPaging = db.SanPhams.Where(sp => sp.TenSanPham.ToUpper().Contains(txtSearch.ToUpper())).OrderBy(sp => sp.TenSanPham).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                var totalRecord = db.SanPhams.Where(sp => sp.TenSanPham.ToUpper().Contains(txtSearch.ToUpper())).Count();
+
+                int pageCount = (int)Math.Ceiling((double)((decimal)totalRecord / Convert.ToDecimal(pageSize)));
+
+                var data = JsonConvert.SerializeObject(new { pageCount , listSearchPaging },
+                    Formatting.None,
+                    new JsonSerializerSettings()
+                    {
+                        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    });
+
+                return Content(data, "application/json");
+            }
+            else
+            {
+                var listSearchPaging = db.SanPhams.OrderBy(sp => sp.TenSanPham).Skip((currentPage - 1) * pageSize).Take(pageSize).ToList();
+                var totalRecord = db.SanPhams.Count();
+
+                int pageCount = (int)Math.Ceiling((double)((decimal)totalRecord / Convert.ToDecimal(pageSize)));
+
+                var data = JsonConvert.SerializeObject(new { pageCount, listSearchPaging },
+                    Formatting.None,
+                    new JsonSerializerSettings()
+                    {
+                        ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                    });
+
+                return Content(data, "application/json");
+            }
         }
 
         // GET: Admin/SanPhams/Create
@@ -65,7 +109,7 @@ namespace ThucPhamSach.Areas.Admin.Controllers
 
                     db.SanPhams.Add(sanPham);
                     db.SaveChanges();
-                   
+
                 }
                 return RedirectToAction("Index");
                 //ViewBag.MaDanhMuc = new SelectList(db.DanhMucSanPhams, "MaDanhMuc", "TenDanhMuc", sanPham.MaDanhMuc);
@@ -75,7 +119,7 @@ namespace ThucPhamSach.Areas.Admin.Controllers
             {
                 ViewBag.Error = "Lỗi Sửa dữ liệu !" + ex.Message;
                 return View(sanPham);
-           
+
             }
         }
 
@@ -122,33 +166,46 @@ namespace ThucPhamSach.Areas.Admin.Controllers
         }
 
         // GET: Admin/SanPhams/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            SanPham sanPham = db.SanPhams.Find(id);
-            if (sanPham == null)
-            {
-                return HttpNotFound();
-            }
-            return View(sanPham);
-        }
+        //public ActionResult Delete(int? id)
+        //{
+        //    if (id == null)
+        //    {
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //    }
+        //    SanPham sanPham = db.SanPhams.Find(id);
+        //    if (sanPham == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(sanPham);
+        //}
 
         // POST: Admin/SanPhams/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost]
+        public ActionResult Delete(int id)
         {
             SanPham sanPham = db.SanPhams.Find(id);
             db.SanPhams.Remove(sanPham);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            var listSearchPaging = db.SanPhams.ToList();
+
+            var totalRecord = db.SanPhams.Count();
+            int pageCount = (int)Math.Ceiling((double)((decimal)totalRecord / Convert.ToDecimal(ThucPhamSachEnum.PageSize)));
+
+            var data = JsonConvert.SerializeObject(new { pageCount , listSearchPaging },
+            Formatting.None,
+            new JsonSerializerSettings()
+            {
+                ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            });
+
+            return Content(data, "application/json");
+
+            //return Json(new { data = listSp }, JsonRequestBehavior.AllowGet);
         }
 
         protected override void Dispose(bool disposing)
-        {
+        {   
             if (disposing)
             {
                 db.Dispose();

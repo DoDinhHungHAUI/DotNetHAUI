@@ -2,4 +2,128 @@
     padding : 0px !important;
 }
 
+.img-thumbnail{
+    width:65px !important;
+    height:65px !important;
+}
 
+.container-fluid {
+    padding: 0px !important;
+}
+
+.table-data2.table tbody tr td:first-child {
+    vertical-align: central !important;
+}
+
+textarea {
+    border: 1px solid #ced4da !important;
+    width: 100% !important;
+    border-radius: 2px !important;
+    padding-left: 10px !important;
+    padding-top: 5px !important;
+}
+
+.format-text {
+    max-width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.highline-text {
+    font-weight: 700 !important;
+}
+
+.icon-dialog-confirm i {
+    color: #ffc107;
+    font-size: 18px;
+}
+
+textarea {
+    width: 100% !important;
+    border: 1px solid #ced4da !important;
+}
+
+.table-data2.table tbody td {
+    padding: 5px 40px !important;
+}
+
+.tr-product img {
+    width: 65px !important;
+    height: 65px !important;
+}
+
+.title-page-admin {
+    margin-bottom: 15px !important;
+}
+
+/* Input search */
+
+
+.input-search {
+    padding: 6px 16px;
+    padding-left: 40px;
+    border-radius: 4px;
+    outline: none;
+    border: 1px solid #bbbbbb;
+    width : 350px !important;
+}
+
+
+.icon-search {
+    background-image: url(../wwwroot/icon/search.png);
+    background-repeat: no-repeat;
+    background-position: 16px center;
+}
+
+
+/* Paging Css*/
+
+.list-page ul li.active {
+    color: #ffffff;
+    background-color: #019160;
+}
+
+/* Grid */
+
+.table-responsive{
+    height : 470px !important;
+    overflow:auto;
+}
+
+.table-responsive thead{
+    position:sticky;
+    top:0px;
+    left:0px;
+    background-color:#ffffff;
+    z-index:100;
+}
+
+/* CSS for Scroll bar */
+
+/* width */
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #BBBBBB;
+}
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #454545;
+    }
+
+/*=============*/
+
+.mb-title {
+    margin-bottom: 15px !important;
+}

@@ -80,4 +80,3 @@ F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFr
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.SqlServer.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.xml
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.SqlServer.xml
-F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csprojAssemblyReference.cache

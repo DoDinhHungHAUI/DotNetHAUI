@@ -5,66 +5,219 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmim.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.PhanQuyen.TenQuyen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.HoTen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ten)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MatKhau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th></th>
-    </tr>
+<!--Jquery-->
+<script src="~/Areas/Admin/Assets/vendor/jquery-3.2.1.min.js"></script>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.PhanQuyen.TenQuyen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HoTen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ten)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DienThoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MatKhau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <!-- DATA TABLE -->
+            <h3 class="title-5 m-b-35">Quản lý danh sách người dùng</h3>
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+
+                </div>
+
+            </div>
+
+            <div class="table-responsive table-responsive-data2">
+                <table class="table table-data2">
+                    <thead>
+                        <tr>
+                            <th>Họ và tên</th>
+                            <th>Email</th>
+                            <th>Mật khẩu</th>
+                            <th>Điện thoại</th>
+                            <th>Địa chỉ</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var item in Model)
+                        {
+
+                            <tr class="tr-shadow">
+                                <td class="taikhoan-name"> @item.HoTen</td>
+                                <td>@item.Email</td>
+                                <td>@item.MatKhau</td>
+                                <td>@item.DienThoai</td>
+                                <td>@item.DiaChi</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item edit-record" title="Sửa tài khoản" data-idToEdit="@item.MaTK">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item delete-record" title="Xóa tài khoản" data-idToDelete="@item.MaTK">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+</div>
+
+@section DialogConfirm{
+    @{
+        Html.RenderPartial("DialogConfirm");
+    }
 }
+<script>
 
-</table>
+    $(document).ready(function () {
+        let taikhoan = new TaiKhoanJs();
+    })
+
+    class TaiKhoanJs {
+
+        idToDeleteRecord = null;
+        idToEditRecord = null;
+
+        constructor() {
+            this.initEventTaiKhoan();
+        }
+
+        initEventTaiKhoan() {
+            var me = this;
+            $('tbody').on('click', '.delete-record', function () {
+                console.log(this);
+                me.idToDeleteRecord = this.getAttribute("data-idToDelete");
+                var nameTaiKhoan = this.parentElement.parentElement.parentElement.querySelector(".taikhoan-name").innerText;
+                $('.dialog-confirm-model').addClass("showDialogConfirm");
+                $('.text-dialog-confirm').html('Bạn có chắc muốn xóa tài khoản ' + '<span class = "highline-text">' + nameTaiKhoan + '</span>' + ' ?');
+            });
+
+            $('#btnHideDialogConfirm').click(function () {
+                $('.dialog-confirm-model').removeClass("showDialogConfirm");
+            })
+
+            $('#btnDeleteRecord').click(me.deleteRecordTaiKhoan.bind(me));
+
+            $('tbody').on('click', '.edit-record', function () {
+                me.idToEditRecord = this.getAttribute("data-idToEdit");
+                location.href = 'TaiKhoans/Edit/' + me.idToEditRecord;
+            });
+        }
+
+        deleteRecordTaiKhoan() {
+            try {
+                debugger;
+                var me = this;
+                $.ajax({
+                    dataType: "json",
+                    type: 'POST',
+                    url: 'SanPhams/Delete/' + me.idToDeleteRecord,
+                    contentType: "application/json; charset=utf-8",
+                }).done(function (res) {
+                    if (res) {
+                        //show toast Message
+                        $('.dialog-confirm-model').removeClass("showDialogConfirm");
+
+                        //Load lại grid
+                        $("#tbody").empty();
+                        var gridData = "";
+                        $.each(res, function (index, obj) {
+                            gridData += `<tr class="tr-shadow">
+                                <td class="taikhoan-name">${item.HoTen}</td>
+                                <td>${item.Email}</td>
+                                <td>${item.MatKhau}</td>
+                                <td>${item.DienThoai}</td>
+                                <td>${item.DiaChi}</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item edit-record" title="Sửa tài khoản" data-idToEdit = ${item.MaTK}>
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item delete-record" title="Xóa tài khoản" data-idToDelete = ${item.MaSP}>
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>`
+                        })
+
+                        $('#tbody').html(gridData);
+
+                    }
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            } catch (err) {
+                console.log(err);
+            }
+        }
+    }
+</script>
+
+
+
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PhanQuyen.TenQuyen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoTen)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DienThoai)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MatKhau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DiaChi)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhanQuyen.TenQuyen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MatKhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+
+    </table>*@

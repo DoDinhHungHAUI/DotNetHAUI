@@ -5,9 +5,9 @@
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
 
     [Table("SanPham")]
+    [Serializable()]
     public partial class SanPham
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -45,7 +45,7 @@
         [StringLength(100)]
         public string Anh { get; set; }
 
-        
+
         public int MaDanhMuc { get; set; }
 
         [Required(ErrorMessage = "Vui lòng nhập số lượng")]

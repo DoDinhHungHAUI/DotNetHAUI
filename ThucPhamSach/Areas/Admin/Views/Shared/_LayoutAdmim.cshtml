@@ -33,7 +33,16 @@
     <!-- Main CSS-->
     <link href="~/Areas/Admin/Assets/css/theme.css" rel="stylesheet" media="all">
 
-    <link href="~/Areas/Admin/wwwroot/common.css" />
+    <link href="~/Areas/Admin/wwwroot/common.css" rel="stylesheet" media="all" />
+    <!-- paging -->
+    <link href="~/Areas/Admin/wwwroot/paging.css" rel="stylesheet" media="all" />
+
+    <!--icon-->
+    <script src="https://kit.fontawesome.com/b7926f3752.js" crossorigin="anonymous"></script>
+
+
+
+
 
 </head>
 
@@ -261,6 +270,10 @@
             <!-- END PAGE CONTAINER-->
         </div>
 
+        @RenderSection("DialogConfirm", required: false)
+
+        @RenderSection("ToastMessageSuccess", required: false)
+
     </div>
 
     <!-- Jquery JS-->
@@ -291,31 +304,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
-
-    <style>
-        .container-fluid{
-            padding:0px !important;
-        }
-
-        .table-data2.table tbody tr td:first-child{
-            vertical-align:central !important;
-        }
-
-        textarea {
-            border: 1px solid #ced4da !important;
-            width: 100% !important;
-            border-radius : 2px !important;
-            padding-left:10px !important;
-            padding-top:5px !important;
-        }
-
-        .format-text {
-            max-width: 150px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-    </style>
+    
 
 </body>
 

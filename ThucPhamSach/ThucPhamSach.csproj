@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Assets\Enum\ThucPhamSachEnum.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\CatalogManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucSanPhamsController.cs" />
@@ -269,6 +270,8 @@
     <Content Include="Areas\Admin\Assets\vendor\wow\animate.css" />
     <Content Include="Areas\Admin\Assets\vendor\wow\wow.min.js" />
     <Content Include="Areas\Admin\wwwroot\common.css" />
+    <Content Include="Areas\Admin\wwwroot\icon\search.png" />
+    <Content Include="Areas\Admin\wwwroot\paging.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -506,6 +509,8 @@
     <Content Include="Areas\Admin\Views\DanhMucSanPhams\Details.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucSanPhams\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\DanhMucSanPhams\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\DialogConfirm.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\ToastMessageSuccess.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

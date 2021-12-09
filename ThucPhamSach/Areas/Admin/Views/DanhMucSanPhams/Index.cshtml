@@ -5,14 +5,17 @@
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmim.cshtml";
 }
 
+<!--Jquery-->
+<script src="~/Areas/Admin/Assets/vendor/jquery-3.2.1.min.js"></script>
 
 <div class="section__content section__content--p30">
     <div class="container-fluid">
         <div class="col-md-12">
             <!-- DATA TABLE -->
-            <h3 class="title-5 m-b-35">Quản lý danh mục hàng</h3>
+            <h3 class="title-5 m-b-35 mb-title" style="margin-bottom:15px !important">Quản lý danh mục hàng</h3>
             <div class="table-data__tool">
                 <div class="table-data__tool-left">
+                    <input type="text" class="icon-search input-search" id="input-search" placeholder="Tên danh mục" style="width : 200px" />
                 </div>
                 <div class="table-data__tool-right">
                     <a href="@Url.Action("Create", "DanhMucSanPhams")" class="au-btn au-btn-icon au-btn--green au-btn--small">
@@ -31,27 +34,28 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.MoTa)
                             </th>
+                            <th></th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="tbody">
 
                         @foreach (var item in Model)
                         {
                             @*<tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.TenDanhMuc)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.MoTa)
-                                </td>
-                                <td>
-                                    @Html.ActionLink("Edit", "Edit", new { id = item.MaDanhMuc }) |
-                                    @Html.ActionLink("Details", "Details", new { id = item.MaDanhMuc }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.MaDanhMuc })
-                                </td>
-                            </tr>*@
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenDanhMuc)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MoTa)
+                                    </td>
+                                    <td>
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.MaDanhMuc }) |
+                                        @Html.ActionLink("Details", "Details", new { id = item.MaDanhMuc }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.MaDanhMuc })
+                                    </td>
+                                </tr>*@
                             <tr class="tr-shadow">
-                                <td>
+                                <td class="product-category-name">
                                     @Html.DisplayFor(modelItem => item.TenDanhMuc)
                                 </td>
                                 <td>
@@ -60,17 +64,24 @@
                                 <td>
                                     <div class="table-data-feature">
 
-                                        <a href="@Url.Action("Edit", "DanhMucSanPhams", new { id = item.MaDanhMuc })">
-                                            <button class="item" data-toggle="tooltip" data-placement="top"
-                                                    title="Edit">
-                                                <i class="zmdi zmdi-edit"></i>
-                                            </button>
-                                        </a>
-                                        <a href="@Url.Action("Delete", "DanhMucSanPhams", new { id = item.MaDanhMuc })">
-                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                <i class="zmdi zmdi-delete"></i>
-                                            </button>
-                                        </a>
+                                        @*<a href="@Url.Action("Edit", "DanhMucSanPhams", new { id = item.MaDanhMuc })">
+                                                <button class="item" data-toggle="tooltip" data-placement="top"
+                                                        title="Edit">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </button>
+                                            </a>
+                                            <a href="@Url.Action("Delete", "DanhMucSanPhams", new { id = item.MaDanhMuc })">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                            </a>*@
+
+                                        <button class="item edit-record" data-toggle="tooltip" data-placement="top" title="Sửa danh mục" data-idToEdit="@item.MaDanhMuc">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item delete-record" data-toggle="tooltip" data-placement="top" title="Xóa danh mục" data-idToDelete="@item.MaDanhMuc">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -80,11 +91,390 @@
                 </table>
             </div>
             <!-- END DATA TABLE -->
+            <!-- Paging -->
+            <div class="paging-bar">
+                <div class="info-page">
+
+                </div>
+                <div class="list-page">
+                    <ul class="pagination" id="pagination">
+                        <li class="prev-first" id="prev-first" data-currentPage="1">
+                            <i class="fas fa-angle-double-left"></i>
+                        </li>
+                        <li class="prev" id="prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </li>
+                        @{
+                            for (int i = 1; i <= ViewBag.PageCount; i++)
+                            {
+                                if (i == 1)
+                                {
+                                    <li class="page-number active" data-currentPage="@i">@i</li>
+                                }
+                                else
+                                {
+                                    <li class="page-number" data-currentPage="@i">@i</li>
+                                }
+                            }
+                        }
+                        <li class="next" id="next">
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li class="next-last" id="next-last" data-currentPage="@ViewBag.PageCount">
+                            <i class="fas fa-angle-double-right"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="record-per-page">
+                    <p>6 sản phẩm/trang</p>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </div>
 
 
+@section DialogConfirm{
+    @{
+        Html.RenderPartial("DialogConfirm");
+    }
+}
+
+
+@section ToastMessageSuccess{
+
+    @{
+        Html.RenderPartial("ToastMessageSuccess");
+    }
+}
+
+
+<script>
+    $(document).ready(function () {
+        let productCategory = new ProductCategoryJs();
+    })
+
+    class ProductCategoryJs {
+        idToDeleteRecord = null;
+        idToEditRecord = null;
+
+        currentPage = 1;
+
+        constructor() {
+            this.initEventProduct();
+        }
+        initEventProduct() {
+
+            var me = this;
+
+            $('tbody').on('click', '.delete-record', function () {
+                me.idToDeleteRecord = this.getAttribute("data-idToDelete");
+                var nameProductCategory = this.parentElement.parentElement.parentElement.querySelector(".product-category-name").innerText;
+                $('.dialog-confirm-model').addClass("showDialogConfirm");
+                $('.text-dialog-confirm').html('Bạn có chắc muốn xóa danh mục ' + '<span class = "highline-text">' + nameProductCategory + '</span>' + ' ?');
+            });
+
+            $('#btnHideDialogConfirm').click(function () {
+                $('.dialog-confirm-model').removeClass("showDialogConfirm");
+            })
+
+            $('#btnDeleteRecord').click(me.deleteRecordProductCategory.bind(me));
+
+            $('tbody').on('click', '.edit-record', function () {
+                me.idToEditRecord = this.getAttribute("data-idToEdit");
+                location.href = 'DanhMucSanPhams/Edit/' + me.idToEditRecord;
+            });
+
+
+            /* ================== Phân trang* =================== /
+
+            /* Click vào số trang (pageNumber) */
+
+            $('body').on('click', '.page-number', function () {
+                var self = this;
+                me.currentPage = parseInt($(this).attr('data-currentPage'));
+                var txt_Search = $('#input-search').val();
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("SearchPaging", "DanhMucSanPhams")',
+                    data: '{txtSearch: "' + txt_Search + '",currentPage: "' + me.currentPage + '"}',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+
+                }).done(function (res) {
+
+                    //======= Loại bỏ hết active của page
+
+                    var pageActive = document.querySelector(".list-page ul li.active");
+                    pageActive.classList.remove('active');
+
+                    //======= Active vô current page
+                    self.classList.add('active')
+
+                    //Load lại grid
+                    me.loadDataGrid(res);
+
+                }).fail(function (res) {
+                    console.log(res)
+                })
+
+            });
+
+            // ============================ Click prev last ================
+
+            $('body').on('click', '#prev-first', function () {
+                var numberPage = parseInt($('.prev-first').attr('data-currentPage'));
+                me.currentPage = numberPage;
+
+                if ($('#prev').next().hasClass('active') == false) {
+                    var txt_Search = $('#input-search').val();
+                    //======= Loại bỏ hết active của page
+                    var pageActive = document.querySelector(".list-page ul li.active");
+                    pageActive.classList.remove('active');
+
+                    //======= Active vô current page
+                    $('#prev').next().addClass('active');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SearchPaging", "DanhMucSanPhams")',
+                        data: '{txtSearch: "' + txt_Search + '",currentPage: "' + me.currentPage + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                    }).done(function (res) {
+
+
+                        //Load lại grid
+                        me.loadDataGrid(res);
+
+                    })
+                }
+            })
+
+            // ========================= Click next class ====================
+
+            $('body').on('click', '#next-last', function () {
+                var numberPage = parseInt($('.next-last').attr('data-currentPage'));
+                me.currentPage = numberPage;
+
+                if ($('#next').prev().hasClass('active') == false) {
+
+                    var txt_Search = $('#input-search').val();
+
+                    //======= Loại bỏ hết active của page
+
+                    var pageActive = document.querySelector(".list-page ul li.active");
+                    pageActive.classList.remove('active');
+
+                    //======= Active vô current page
+                    $('#next').prev().addClass('active');
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SearchPaging", "DanhMucSanPhams")',
+                        data: '{txtSearch: "' + txt_Search + '",currentPage: "' + me.currentPage + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                    }).done(function (res) {
+
+                        //Load lại grid
+                        me.loadDataGrid(res);
+                    })
+                }
+            })
+
+            //================Click prev ==========
+
+            $('body').on('click', '#prev', function () {
+                var numberPage = parseInt($('.prev-first').attr('data-currentPage'));
+
+                if (me.currentPage <= parseInt(numberPage)) {
+                    me.currentPage = parseInt(numberPage);
+                } else {
+
+                    me.currentPage = me.currentPage - 1;
+                    var txt_Search = $('#input-search').val();
+
+                    //======= Loại bỏ hết active của page
+
+                    var pageActive = document.querySelector(".list-page ul li.active");
+                    pageActive.classList.remove('active');
+
+                    //======= Active vô current page
+                    pageActive.previousElementSibling.classList.add('active')
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SearchPaging", "DanhMucSanPhams")',
+                        data: '{txtSearch: "' + txt_Search + '",currentPage: "' + me.currentPage + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                    }).done(function (res) {
+                        //Load lại grid
+                        me.loadDataGrid(res);
+                    }).fail(function (res) {
+                        console.log(res);
+                    })
+                }
+            })
+
+            //================Click next ==========
+
+            $('body').on('click', '#next', function () {
+                var numberPage = parseInt($('.next-last').attr('data-currentPage'));
+                if (me.currentPage >= parseInt(numberPage)) {
+                    me.currentPage = parseInt(numberPage);
+                }
+                else {
+                    me.currentPage = me.currentPage + 1;
+                    var txt_Search = $('#input-search').val();
+
+                    //======= Loại bỏ hết active của page
+
+                    var pageActive = document.querySelector(".list-page ul li.active");
+                    pageActive.classList.remove('active');
+
+                    //======= Active vô current page
+                    pageActive.nextElementSibling.classList.add('active')
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '@Url.Action("SearchPaging", "DanhMucSanPhams")',
+                        data: '{txtSearch: "' + txt_Search + '",currentPage: "' + me.currentPage + '"}',
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                    }).done(function (res) {
+
+                        //Load lại grid
+                        me.loadDataGrid(res);
+                    })
+                }
+            })
+
+            // ================================= Tìm kiếm ===================
+            $('#input-search').keydown(function (e) {
+
+                if (e.which == 13) {
+                    me.btnSearchProduct();
+                }
+            })
+        }
+
+        loadDataPaging(res) {
+            //Load lại paging
+            var pagingData = "";
+            $('#pagination').empty();
+
+            pagingData += `<li class="prev-first" id="prev-first" data-currentPage="1"><i class="fas fa-angle-double-left"></i></li><li class="prev" id = "prev"><i class="fas fa-chevron-left"></i></li>`;
+
+            for (let i = 1; i <= parseInt(res.pageCount); i++) {
+                if (i == 1) {
+                    pagingData += `<li class="page-number active" data-currentPage = ${i}>${i}</li>`
+                }
+                else {
+                    pagingData += `<li class="page-number" data-currentPage = ${i}>${i}</li>`
+                }
+            }
+            pagingData += `<li class="next" id="next"><i class="fas fa-chevron-right"></i></li><li class="next-last" id="next-last" data-currentPage= ${res.pageCount}><i class="fas fa-angle-double-right"></i></li>`;
+            $('#pagination').html(pagingData);
+        }
+
+        loadDataGrid(res) {
+            //Load lại grid
+            $("#tbody").empty();
+            var gridData = "";
+            $.each(res.listSearchPaging, function (index, obj) {
+
+                gridData += `<tr class="tr-shadow">
+                                <td class="product-category-name">
+                                    ${obj.TenDanhMuc}
+                                </td>
+                                <td>
+                                    ${obj.MoTa}
+                                </td>
+                                <td>
+                                    <div class="table-data-feature">
+
+                                        <button class="item edit-record"  title="Sửa sản phẩm" data-idToEdit=${obj.MaDanhMuc}>
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+
+                                        <button class="item delete-record" title="Xóa sản phẩm" data-idToDelete=${obj.MaDanhMuc}>
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>`
+            })
+            $('#tbody').html(gridData);
+        }
+
+
+        deleteRecordProductCategory() {
+            try {
+                debugger;
+                var me = this;
+                $.ajax({
+                    dataType: "json",
+                    type: 'POST',
+                    url: 'DanhMucSanPhams/Delete/' + me.idToDeleteRecord,
+                    contentType: "application/json; charset=utf-8",
+                }).done(function (res) {
+                    if (res) {
+                        //show toast Message
+
+                        //show Toast Message
+
+                        $('#content-toast').text('Xóa danh mục thành công');
+                        $('.toast-model').css('display', 'block')
+                        setTimeout(() => {
+                            $('.toast-model').css('display', 'none')
+                        }, 3000)
+
+                        $('.dialog-confirm-model').removeClass("showDialogConfirm");
+
+                        me.loadDataGrid(res);
+
+                        me.loadDataPaging(res);
+
+                    }
+                }).fail(function (err) {
+                    console.log(err);
+                })
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+        btnSearchProduct() {
+            var me = this;
+            var txt_search = $('#input-search').val();
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("SearchPaging", "DanhMucSanPhams")',
+                data: '{txtSearch: "' + txt_search + '"}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+            }).done(function (res) {
+
+                me.loadDataGrid(res);
+
+                me.loadDataPaging(res)
+
+            }).fail(function (res) {
+                console.log(res);
+            })
+        }
+
+
+
+    }
+
+</script>
 
 
 

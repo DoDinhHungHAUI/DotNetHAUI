@@ -127,3 +127,24 @@ textarea {
 .mb-title {
     margin-bottom: 15px !important;
 }
+
+.upload-images{
+    display:flex;
+}
+
+.multiple-images {
+    border : 1px solid #ced4da !important;
+    margin-left: 20px;
+    width: 320px;
+    display: flex;
+    justify-content: space-around;
+    border-radius: 3px;
+}
+
+.owl-carousel .owl-item img {
+    height: 295px !important;
+}
+
+
+
+

@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<ThucPhamSach.Models.SanPham>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -119,141 +121,49 @@
         </div>
 
         <div class="row special-list">
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Giảm giá</p>
-                        </div>
-                        <img src="~/wwwroot/images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li>
-                                    <a href="shop-detail.html" data-toggle="tooltip" data-placement="right" title="View">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right"
-                                       title="Add to Wishlist"><i class="far fa-heart"></i></a>
-                                </li>
-                            </ul>
-                            <a class="cart" href="#">Thêm vào giỏ hàng</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Cà rốt</h4>
-                        <h5> 120.000 Vnđ</h5>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="new">Mới</p>
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-6 special-grid best-seller">
+                    <div class="products-single fix">
+                        <div class="box-img-hover">
+                            <div class="type-lb">
+                                <p class="sale">Giảm giá</p>
+                            </div>
+                            @{ 
+                                var imagePath = "~/wwwroot/images/" + item.Anh;
+                            }
+                            <img src="@Url.Content(imagePath)" class="img-fluid" alt="Image">
+                            <div class="mask-icon">
+                                <ul>
+                                    <li>
+                                        <a href="@Url.Action("ProductDetail", "Product" , new { id = item.MaSP})" data-toggle="tooltip" data-placement="right" title="View">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" data-toggle="tooltip" data-placement="right"
+                                           title="Add to Wishlist"><i class="far fa-heart"></i></a>
+                                    </li>
+                                </ul>
+                                <a class="cart" href="#">Thêm vào giỏ hàng</a>
+                            </div>
                         </div>
-                        <img src="~/wwwroot/images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li>
-                                    <a href="shop-detail.html" data-toggle="tooltip" data-placement="right" title="View">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right"
-                                       title="Add to Wishlist"><i class="far fa-heart"></i></a>
-                                </li>
-                            </ul>
-                            <a class="cart" href="#">Thêm vào giỏ hàng</a>
+                        <div class="why-text">
+                            <h4>@item.TenSanPham</h4>
+                            <h5> @string.Format("{0:#,###}", item.GiaBan) Vnđ</h5>
                         </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Cà chua</h4>
-                        <h5> 120.000 Vnđ</h5>
                     </div>
                 </div>
-            </div>
+            }
 
-            <div class="col-lg-3 col-md-6 special-grid top-featured">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Giảm giá</p>
-                        </div>
-                        <img src="~/wwwroot/images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li>
-                                    <a href="shop-detail.html" data-toggle="tooltip" data-placement="right" title="View">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right"
-                                       title="Add to Wishlist"><i class="far fa-heart"></i></a>
-                                </li>
-                            </ul>
-                            <a class="cart" href="#">Thêm vào giỏ hàng</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Nho</h4>
-                        <h5> 100.000 Vnđ</h5>
-                    </div>
-                </div>
-            </div>
+            
 
-            <div class="col-lg-3 col-md-6 special-grid best-seller">
-                <div class="products-single fix">
-                    <div class="box-img-hover">
-                        <div class="type-lb">
-                            <p class="sale">Giảm giá</p>
-                        </div>
-                        <img src="~/wwwroot/images/img-pro-04.jpg" class="img-fluid" alt="Image">
-                        <div class="mask-icon">
-                            <ul>
-                                <li>
-                                    <a href="shop-detail.html" data-toggle="tooltip" data-placement="right" title="View">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right" title="Compare">
-                                        <i class="fas fa-sync-alt"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" data-toggle="tooltip" data-placement="right"
-                                       title="Add to Wishlist"><i class="far fa-heart"></i></a>
-                                </li>
-                            </ul>
-                            <a class="cart" href="#">Thêm vào giỏ hàng</a>
-                        </div>
-                    </div>
-                    <div class="why-text">
-                        <h4>Đủ đủ</h4>
-                        <h5> 120.000 vnđ</h5>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 </div>
@@ -261,7 +171,8 @@
 <!-- Start Blog  -->
 <!-- End Blog  -->
 <!-- Start Instagram Feed  -->
-<div class="instagram-box">
+
+@*<div class="instagram-box">
     <div class="main-instagram owl-carousel owl-theme">
         <div class="item">
             <div class="ins-inner-box">
@@ -344,6 +255,6 @@
             </div>
         </div>
     </div>
-</div>
+</div>*@
 <!-- End Instagram Feed  -->
 <!-- Start Footer  -->

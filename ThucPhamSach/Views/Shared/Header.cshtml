@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<ThucPhamSach.Models.DanhMucSanPham>
+
 <!-- Start Main Top -->
 <header class="main-header">
     <!-- Start Navigation -->
@@ -17,43 +18,32 @@
             </div>
             <!-- End Header Navigation -->
             <!-- Collect the nav links, forms, and other content for toggling -->
+
             <div class="collapse navbar-collapse" id="navbar-menu">
                 <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-
-
-                    @*<li class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")" class ="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index" , "Home")">Trang Chủ</a>
-                    </li>
-
-                    <li class="@(ViewContext.RouteData.Values["Action"].ToString() == "ProductCategory" ? "active" : "")" class ="dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-                            Danh Mục Sản
-                            Phẩm
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Nông Sản</a></li>
-                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Tươi Sống</a></li>
-                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Khô</a></li>
-                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Đóng Hộp</a></li>
-                        </ul>
-                    </li>*@
 
                     <li class="nav-item" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"><a class="nav-link" href="@Url.Action("Index" , "Home")">Trang Chủ</a></li>
 
                     <li class="dropdown" class="@(ViewContext.RouteData.Values["Action"].ToString() == "ProductCategory" ? "active" : "")">
                         <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">
-                            Danh Mục Sản
-                            Phẩm
+                            Danh Mục Sản Phẩm
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Nông Sản</a></li>
+
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="@Url.Action("ProductCategory","Product" , new { id = item.MaDanhMuc})">@item.TenDanhMuc</a></li>
+                            }
+
+                            @*<li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Nông Sản</a></li>
                             <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Tươi Sống</a></li>
                             <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Khô</a></li>
-                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Đóng Hộp</a></li>
+                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Đóng Hộp</a></li>*@
                         </ul>
                     </li>
                 </ul>
             </div>
+
             <!-- /.navbar-collapse -->
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
@@ -75,33 +65,15 @@
             <!-- End Atribute Navigation -->
         </div>
         <!-- Start Side Menu -->
-        <!-- <div class="side">
-            <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-            <li class="cart-box">
-                <ul class="cart-list">
-                    <li>
-                        <a href="#" class="photo"><img src="~/wwwroot/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Delica omtantur </a></h6>
-                        <p>1x - <span class="price">$80.00</span></p>
-                    </li>
-                    <li>
-                        <a href="#" class="photo"><img src="~/wwwroot/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Omnes ocurreret</a></h6>
-                        <p>1x - <span class="price">$60.00</span></p>
-                    </li>
-                    <li>
-                        <a href="#" class="photo"><img src="~/wwwroot/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                        <h6><a href="#">Agam facilisis</a></h6>
-                        <p>1x - <span class="price">$40.00</span></p>
-                    </li>
-                    <li class="total">
-                        <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                        <span class="float-right"><strong>Total</strong>: $180.00</span>
-                    </li>
-                </ul>
-            </li>
-        </div> -->
+   
         <!-- End Side Menu -->
     </nav>
     <!-- End Navigation -->
 </header>
+
+
+<style>
+    .dropdown .dropdown-menu a {
+        color: #ffffff !important;
+    }
+</style>

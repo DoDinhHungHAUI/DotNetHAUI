@@ -1,32 +1,12 @@
 ﻿
 @model ThucPhamSach.Infrastructure.Core.PaginationSet<ThucPhamSach.Models.SanPham>
 
+
 @{
-    ViewBag.Title = "ProductCategory";
+    ViewBag.Title = "Search";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-@section SliderDetail{
-    <!-- Start All Title Box -->
-    @*<div class="all-title-box">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h2>Shop Detail</h2>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                            <li class="breadcrumb-item active">Shop Detail </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>*@
-    <!-- End All Title Box -->
-}
-
-<!-- Start Shop Page  -->
 
 <div class="shop-box-inner">
     <div class="container">
@@ -35,23 +15,24 @@
                 <div class="right-product-box">
 
                     <div class="product-item-filter row">
-                        <div class="col-12 col-sm-8 text-center text-sm-left">
+                        <div class="col-12 text-center text-sm-left">
                             <div class="toolbar-sorter-right">
                                 <span>Sắp xếp</span>
-                                <a href="@Url.Action("Search" , "Product" , new { sort = "giaban"})">Giá bán</a>
-                                <a href="@Url.Action("Search" , "Product" , new {sort = "tensp"})">Tên sản phẩm</a>
+                                @*<a href="@Url.Action("Search" , "Product" , new { keyword = ViewBag.keyword, sort = "giaban"})">Giá bán</a>
+                                <a href="@Url.Action("Search" , "Product" , new { keyword = ViewBag.keyword, sort = "tensp"})">Tên sản phẩm</a>*@
                                 @*<select id="basic" class="selectpicker show-tick form-control">
-                                        <option>
-                                            <a href="@Url.Action("Search" , "Product" , new { sort = "giaban"})">Giá bán</a>
-                                        </option>
-                                        <option value="1">Popularity</option>
-                                        <option value="2">High Price → High Price</option>
-                                        <option value="3">Low Price → High Price</option>
-                                        <option value="4">Best Selling</option>
-                                    </select>*@
+                                    <option>
+                                        <a href="@Url.Action("Search" , "Product" , new { sort = "giaban"})">Giá bán</a>
+                                    </option>
+                                    <option value="1">Popularity</option>
+                                    <option value="2">High Price → High Price</option>
+                                    <option value="3">Low Price → High Price</option>
+                                    <option value="4">Best Selling</option>
+                                </select>*@
                             </div>
+                            <p>Kết quả tìm kiếm @ViewBag.keyword - @Model.Items.Count() Sản phẩm</p>
                         </div>
-                        <div class="col-12 col-sm-4 text-center text-sm-right">
+                        @*<div class="col-12 col-sm-4 text-center text-sm-right">
                             <ul class="nav nav-tabs ml-auto">
                                 <li>
                                     <a class="nav-link active" href="#grid-view" data-toggle="tab">
@@ -64,7 +45,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>*@
                     </div>
 
                     @if (Model.Count > 0)
@@ -133,6 +114,15 @@
 
             <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                 <div class="product-categori">
+                    @*<div class="search-product">
+                        @using (Html.BeginForm("Search", "Product", FormMethod.Get))
+                        {
+                            <input class="form-control" name="keyword" placeholder="Search here..." type="text">
+                            <button type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        }
+                    </div>*@
                     <div class="filter-sidebar-left">
                         <div class="title-left">
                             <h3>Danh mục sản phẩm</h3>
@@ -158,19 +148,6 @@
 
                             }
 
-                            @*<a class="list-group-item list-group-item-action" href="#sub-men2"
-                                   aria-expanded="false" aria-controls="sub-men2">
-                                    Thực phẩm tươi sống
-                                    <small class="text-muted">(50)</small>
-                                </a>
-
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    Thực phẩm khô <small class="text-muted">(150) </small>
-                                </a>
-
-                                <a href="#" class="list-group-item list-group-item-action">
-                                    Thực phẩm đóng hộp <small class="text-muted">(22)</small>
-                                </a>*@
                         </div>
                     </div>
                 </div>
@@ -190,12 +167,12 @@
                         @if (Model.Page > 1)
                         {
                             <li class="page-item">
-                                <a class="?page=1 page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id ,page = 1})" aria-label="First">
+                                <a class="?page=1 page-link" href="@Url.Action("Search" , "Product" , new { keyword = ViewBag.keyword , page = 1})" aria-label="First">
                                     <i class="fas fa-angle-double-left"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id ,page = Model.Page - 1})" aria-label="Previous">
+                                <a class="page-link" href="@Url.Action("Search" , "Product" , new {keyword = ViewBag.keyword ,  page = Model.Page - 1})" aria-label="Previous">
                                     <i class="fas fa-angle-left"></i>
                                 </a>
                             </li>
@@ -204,73 +181,46 @@
                         {
                             if (Model.Page == i)
                             {
-                                <li class="active page-item"><a href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = i})" class="page-link" title="trang @i">@i</a></li>
+                                <li class="active page-item"><a href="@Url.Action("Search" , "Product" , new { keyword = ViewBag.keyword , page = i})" class="page-link" title="trang @i">@i</a></li>
                             }
                             else
                             {
-                                <li class="page-item"><a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = i})" title="Trang @i">@i</a></li>
+                                <li class="page-item"><a class="page-link" href="@Url.Action("Search" , "Product" , new {keyword = ViewBag.keyword , page = i})" title="Trang @i">@i</a></li>
                             }
                         }
 
                         @if (Model.Page < Model.TotalPages)
                         {
                             <li>
-                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new { id = ViewBag.id , page = Model.Page + 1})" aria-label="Next">
+                                <a class="page-link" href="@Url.Action("Search" , "Product" , new { keyword = ViewBag.keyword , page = Model.Page + 1})" aria-label="Next">
                                     <i class="fas fa-angle-right"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = Model.TotalPages})" aria-label="Last">
+                                <a class="page-link" href="@Url.Action("Search" , "Product" , new {keyword = ViewBag.keyword , page = Model.TotalPages})" aria-label="Last">
                                     <i class="fas fa-angle-double-right"></i>
                                 </a>
                             </li>
                         }
+
                     </ul>
                 </nav>
             </div>
+
         }
+
+
     </div>
 </div>
 
-
-
-
-
-<!-- End Shop Page -->
-<!-- Start Instagram Feed  -->
-@*<div class="instagram-box">
-        <div class="main-instagram owl-carousel owl-theme">
-
-            @foreach (var item in Model)
-            {
-                <div class="item">
-                    <div class="ins-inner-box">
-                        @{
-                            string imagePath = "~/wwwroot/images/" + item.Anh;
-                        }
-
-                        <img src="@Url.Content(imagePath)" alt="" class="image-carosel" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>*@
-<!-- End Instagram Feed  -->
-
-
 <style>
-    .image-carosel {
-        height: 295px !important;
-    }
 
-    .img-fluid {
-        height: 205px !important;
-    }
-
-    .active-nav-category {
-        font-weight: 700;
-    }
 </style>
+
+
+
+
+
+
+
+

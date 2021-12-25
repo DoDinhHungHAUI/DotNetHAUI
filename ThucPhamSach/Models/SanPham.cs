@@ -39,7 +39,8 @@
 
         [DisplayName("Giá bán")]
         [Required(ErrorMessage = "Vui lòng nhập giá bán")]
-        public decimal GiaBan { get; set; }
+        [DisplayFormat(DataFormatString = "{0:###}")]
+        public decimal? GiaBan { get; set; }
 
         [DisplayName("Hình ảnh")]
         [StringLength(100)]

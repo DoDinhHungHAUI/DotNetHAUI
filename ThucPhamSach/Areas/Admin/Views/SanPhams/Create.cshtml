@@ -44,7 +44,14 @@
                                 <label for="file-input" class=" form-control-label">Ảnh</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <img id="output" class="img-thumbnail" alt="ảnh" width="180" height="200" src="~/wwwroot/Images/noImage.png" />
+                                <div class="upload-images">
+                                    <img id="output" class="img-thumbnail" alt="ảnh" width="180" height="200" src="~/wwwroot/Images/noImage.png" />
+                                    @*<div class="multiple-images">
+                                        <img id="output" class="img-thumbnail" alt="ảnh" width="180" height="200" src="~/wwwroot/Images/noImage.png" />
+                                        <img id="output" class="img-thumbnail" alt="ảnh" width="180" height="200" src="~/wwwroot/Images/noImage.png" />
+                                        <img id="output" class="img-thumbnail" alt="ảnh" width="180" height="200" src="~/wwwroot/Images/noImage.png" />
+                                    </div>*@
+                                </div>
 
                                 <p>
                                     <label for="ufile" style="cursor : pointer;">
@@ -52,7 +59,7 @@
                                     </label>
                                 </p>
 
-                                <input name="ImageFile" id="ufile" type="file" style="display:none;" onchange="loadFile(event)" />
+                                <input name="ImageFile" multiple="multiple" id="ufile" type="file" style="display:none;" onchange="loadFile(event)" />
 
                             </div>
                         </div>

@@ -10,6 +10,7 @@
                 <div class="our-link">
                     <ul>
                         <li><a href="@Url.Action("ChangeInfoUser" , "Home")"><i class="fa fa-user s_color"></i>Tài Khoản</a></li>
+                        <li><a href="@Url.Action("ChangePasswordUser" , "Home")"><i class="fas fa-unlock"></i>Đổi mật khẩu</a></li>
                         <li><a href="#"><i class="fas fa-headset"></i> Liên Hệ</a></li>
                     </ul>
                 </div>
@@ -19,6 +20,17 @@
                         width: 215px;
                     ">
                     <ul style="display: flex;">
+                        <li style="margin-right : 25px">
+                            <div class="search-product">
+                                @using (Html.BeginForm("Search", "Product", FormMethod.Get))
+                                {
+                                    <input class="form-control" name="keyword" placeholder="Tím kiếm..." type="text">
+                                    <button type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                }
+                            </div>
+                        </li>
                         <li style="margin-right: 25px;">
                             <i class="fas fa-sign-in-alt" style="color: white;font-size: 16px;margin-right: 5px;"></i>
                             <a href="@Url.Action("Login", "Home")" style="font-size: 16px;color:white;">Đăng nhập</a>

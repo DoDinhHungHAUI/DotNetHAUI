@@ -80,4 +80,3 @@ F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\Microsof
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csproj.CopyComplete
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.pdb
-F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csprojAssemblyReference.cache

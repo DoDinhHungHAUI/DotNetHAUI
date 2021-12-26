@@ -26,7 +26,7 @@ namespace ThucPhamSach.Areas.Admin.Controllers
         }
 
         // GET: Admin/DanhMucSanPhams/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult ChiTiet(int? id)
         {
             if (id == null)
             {

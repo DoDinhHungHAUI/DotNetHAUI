@@ -65,20 +65,25 @@
                                     <div class="table-data-feature">
 
                                         @*<a href="@Url.Action("Edit", "DanhMucSanPhams", new { id = item.MaDanhMuc })">
-                                                <button class="item" data-toggle="tooltip" data-placement="top"
-                                                        title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                            </a>
-                                            <a href="@Url.Action("Delete", "DanhMucSanPhams", new { id = item.MaDanhMuc })">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                </button>
-                                            </a>*@
+                                            <button class="item" data-toggle="tooltip" data-placement="top"
+                                                    title="Edit">
+                                                <i class="zmdi zmdi-edit"></i>
+                                            </button>
+                                        </a>
+                                        <a href="@Url.Action("Delete", "DanhMucSanPhams", new { id = item.MaDanhMuc })">
+                                            <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <i class="zmdi zmdi-delete"></i>
+                                            </button>
+                                        </a>*@
 
                                         <button class="item edit-record" data-toggle="tooltip" data-placement="top" title="Sửa danh mục" data-idToEdit="@item.MaDanhMuc">
                                             <i class="zmdi zmdi-edit"></i>
                                         </button>
+
+                                        <button class="item detail-record" title="Chi tiết sản phẩm" data-idToDetail="@item.MaDanhMuc">
+                                            <i class="fas fa-info"></i>
+                                        </button>
+
                                         <button class="item delete-record" data-toggle="tooltip" data-placement="top" title="Xóa danh mục" data-idToDelete="@item.MaDanhMuc">
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>
@@ -159,7 +164,7 @@
     class ProductCategoryJs {
         idToDeleteRecord = null;
         idToEditRecord = null;
-
+        idToDetalRecord = null
         currentPage = 1;
 
         constructor() {
@@ -185,6 +190,11 @@
             $('tbody').on('click', '.edit-record', function () {
                 me.idToEditRecord = this.getAttribute("data-idToEdit");
                 location.href = 'DanhMucSanPhams/Edit/' + me.idToEditRecord;
+            });
+
+            $('tbody').on('click', '.detail-record', function () {
+                me.idToDetalRecord = this.getAttribute("data-idToDetail");
+                location.href = 'DanhMucSanPhams/ChiTiet/' + me.idToDetalRecord;
             });
 
 
@@ -401,7 +411,9 @@
                                         <button class="item edit-record"  title="Sửa sản phẩm" data-idToEdit=${obj.MaDanhMuc}>
                                             <i class="zmdi zmdi-edit"></i>
                                         </button>
-
+                                         <button class="item detail-record" data-idToDetail=${obj.MaDanhMuc}>
+                                            <i class="fas fa-info"></i>
+                                        </button>
                                         <button class="item delete-record" title="Xóa sản phẩm" data-idToDelete=${obj.MaDanhMuc}>
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>

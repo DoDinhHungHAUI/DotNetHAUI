@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -219,35 +220,16 @@
 
                                 </div>
                                 <div class="account-wrap">
-                                    <div class="account-item clearfix js-item-menu">
-                                        <div class="image">
-                                            <img src="~/Areas/Admin/Assets/images/icon/avatar-01.jpg" alt="John Doe" />
-                                        </div>
-                                        <div class="content">
-                                            <a class="js-acc-btn" href="#">john doe</a>
-                                        </div>
-                                        <div class="account-dropdown js-dropdown">
-                                            <div class="account-dropdown js-dropdown">
-                                                <div class="info clearfix">
-                                                    <div class="image">
-                                                        <a href="#">
-                                                            <img src="~/Areas/Admin/Assets/images/icon/avatar-01.jpg" alt="John Doe" />
-                                                        </a>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h5 class="name">
-                                                            <a href="#">john doe</a>
-                                                        </h5>
-                                                        <span class="email">johndoe@example.com</span>
-                                                    </div>
-                                                </div>
+                                    <div class=" d-flex ">
 
-                                                <div class="account-dropdown__footer">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-power"></i>Logout
-                                                    </a>
-                                                </div>
-                                            </div>
+
+                                        <div class="content mx-2">
+                                            <a class="js-acc-btn" href="#">
+                                                @Session["HoTen"]
+                                            </a>
+                                        </div>
+                                        <div class="content mx-2">
+                                            <a class="js-acc-btn" href="@Url.Action("DangXuat", "Homes")">Đăng Xuất</a>
                                         </div>
                                     </div>
                                 </div>
@@ -299,7 +281,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    
+
     <!--Css ưu tiên-->
     <link href="~/wwwroot/css/common.css" rel="stylesheet" media="all" />
 

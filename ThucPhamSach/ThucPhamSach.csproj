@@ -494,6 +494,8 @@
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmim1.cshtml" />
     <Content Include="Areas\Admin\Views\Homes\DangNhap.cshtml" />
     <Content Include="Areas\Admin\Views\DonHangs\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\SanPhams\ChiTiet.cshtml" />
+    <Content Include="Areas\Admin\Views\DanhMucSanPhams\ChiTiet.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

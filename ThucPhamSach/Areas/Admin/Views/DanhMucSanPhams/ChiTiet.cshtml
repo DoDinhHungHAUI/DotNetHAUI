@@ -1,0 +1,55 @@
+﻿
+@model ThucPhamSach.Models.DanhMucSanPham
+
+@{
+    ViewBag.Title = "ChiTiet";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmim.cshtml";
+}
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="col-md-12 m-3">
+            <!-- DATA TABLE -->
+            <h3 class="title-5 m-b-35 title-page-admin">Chi tiết danh mục sản phẩm</h3>
+
+
+            <!-- END DATA TABLE -->
+            <!-- Paging -->
+
+
+            <div class="form-row " style="background-color:white">
+
+                <div class="form-group col-md-12 m-3 ">
+                    <label for="HoTen" class="mb-0"><span class="title-detail-page">Tên danh mục :</span>   @Html.DisplayFor(model => model.TenDanhMuc)</label>
+
+                </div>
+                <div class="form-group col-md-12 m-3">
+                    <label for="HoTen" class="mb-0"><span class="title-detail-page">Mô tả :</span> @Html.DisplayFor(model => model.MoTa)</label>
+
+                </div>
+                
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+
+                    @Html.ActionLink("Quay lại", "Index")
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>
+
+
+<style>
+    .title-detail-page {
+        font-weight: 700 !important;
+    }
+
+    .form-row {
+        margin-right: 0px !important;
+    }
+</style>

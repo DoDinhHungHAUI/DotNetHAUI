@@ -1,0 +1,75 @@
+﻿@model ThucPhamSach.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- Start Cart  -->
+@section SliderDetail{
+    <!-- Start All Title Box -->
+    <div class="all-title-box">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Shop Detail</h2>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                        <li class="breadcrumb-item active">Shop Detail </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End All Title Box -->
+}
+
+
+
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row new-account-login">
+
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left" style="text-align: center;">
+                    <h3>Thông Tin Tài Khoản</h3>
+                </div>
+
+                @using (Html.BeginForm("DangKy", "Home", FormMethod.Post, new { @class = "mt-3" }))
+                {
+                    //@Html.ValidationSummary()
+                    @Html.AntiForgeryToken()
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
+                            <label for="HoTen" class="mb-0">Họ Và Tên:  @Html.DisplayFor(model => model.HoTen)</label>
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="HoTen" class="mb-0">Tên Tài Khoản:@Html.DisplayFor(model => model.Ten)</label>
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="Email" class="mb-0">Email:@Html.DisplayFor(model => model.Email)</label>
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="DienThoai" class="mb-0">Điện Thoại:@Html.DisplayFor(model => model.DienThoai)</label>
+
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="DiaChi" class="mb-0">Địa Chỉ: @Html.DisplayFor(model => model.DiaChi)</label>
+
+                        </div>
+
+                    </div>
+                    <a href="@Url.Action("SuaThongTinTaiKhoan", "Home", new { id = @HttpContext.Current.Session["idUser"].ToString()})" style="color: white;" class="btn hvr-hover">Sửa Thông Tin</a>
+                    <a href="@Url.Action("SuaMatKhau", "Home", new { id = @HttpContext.Current.Session["idUser"].ToString()})" style="color: white;" class="btn hvr-hover">Sửa Mật Khẩu</a>
+                }
+            </div>
+        </div>
+
+
+    </div>
+</div>

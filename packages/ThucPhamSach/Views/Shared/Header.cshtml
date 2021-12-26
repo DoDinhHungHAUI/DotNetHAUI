@@ -1,0 +1,83 @@
+﻿@model IEnumerable<ThucPhamSach.Models.DanhMucSanPham>
+
+<!-- Start Main Top -->
+<header class="main-header">
+    <!-- Start Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
+        <div class="container">
+            <!-- Start Header Navigation -->
+            <div class="navbar-header">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu"
+                        aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="@Url.Action("Index" , "Home")">
+                    <img width="200" height="110" src="~/wwwroot/images/logo1.jpg"
+                         class="logo" alt="">
+                </a>
+            </div>
+            <!-- End Header Navigation -->
+            <!-- Collect the nav links, forms, and other content for toggling -->
+
+            <div class="collapse navbar-collapse" id="navbar-menu">
+                <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+
+                    <li class="nav-item" class="@(ViewContext.RouteData.Values["Action"].ToString() == "Index" ? "active" : "")"><a class="nav-link" href="@Url.Action("Index" , "Home")">Trang Chủ</a></li>
+
+                    <li class="dropdown" class="@(ViewContext.RouteData.Values["Action"].ToString() == "ProductCategory" ? "active" : "")">
+                        <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">
+                            Danh Mục Sản Phẩm
+                        </a>
+                        <ul class="dropdown-menu">
+
+                            @foreach (var item in Model)
+                            {
+                                <li><a href="@Url.Action("ProductCategory","Product" , new { id = item.MaDanhMuc})">@item.TenDanhMuc</a></li>
+                            }
+
+                            @*<li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Nông Sản</a></li>
+                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Tươi Sống</a></li>
+                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Khô</a></li>
+                            <li><a href="@Url.Action("ProductCategory","Product")">Thực Phẩm Đóng Hộp</a></li>*@
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- /.navbar-collapse -->
+            <!-- Start Atribute Navigation -->
+            <div class="attr-nav">
+                <ul>
+                    <li class="search">
+                        <a href="#">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                    </li>
+                    <li class="side-menu"  class="@(ViewContext.RouteData.Values["Action"].ToString() == "ShoppingCart" ? "active" : "")">
+                        @*<p style="position: relative;top: 26px;">
+                            <a  href="@Url.Action("Index","ShoppingCart")">
+                                <i class="fa fa-shopping-bag"></i>
+                                <span class="badge">0</span>
+                            </a>
+                        </p>*@
+                        <p style="position: relative;top: 26px;">
+                            <a href="@Url.Action("Index","ShoppingCart")">Giỏ Hàng</a>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <!-- End Atribute Navigation -->
+        </div>
+        <!-- Start Side Menu -->
+   
+        <!-- End Side Menu -->
+    </nav>
+    <!-- End Navigation -->
+</header>
+
+
+<style>
+    .dropdown .dropdown-menu a {
+        color: #ffffff !important;
+    }
+</style>

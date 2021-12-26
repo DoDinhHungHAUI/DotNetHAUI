@@ -1,0 +1,140 @@
+﻿@model ThucPhamSach.Models.TaiKhoan
+@{
+    ViewBag.Title = "SignUp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Start Cart  -->
+@section SliderDetail{
+    <!-- Start All Title Box -->
+    @*<div class="all-title-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Shop Detail</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                            <li class="breadcrumb-item active">Shop Detail </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <!-- End All Title Box -->
+}
+
+
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row new-account-login">
+
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left" style="text-align: center;">
+                    <h3>Đăng Ký</h3>
+                </div>
+
+                @using (Html.BeginForm("DangKy", "Home", FormMethod.Post, new { @class = "mt-3" }))
+                {
+                    //@Html.ValidationSummary()
+                    @Html.AntiForgeryToken()
+                    <div class="form-row">
+
+                        <div class="form-group col-md-12">
+                            <label for="HoTen" class="mb-0">Họ Và Tên</label>
+                            @Html.TextBoxFor(m => m.HoTen, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="HoTen" class="mb-0">Tên Tài Khoản</label>
+                            @Html.TextBoxFor(m => m.Ten, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Ten, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="Email" class="mb-0">Email</label>
+                            @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            @if (ViewBag.error != null)
+                            {
+                                <span class="text-danger">@ViewBag.error</span>
+                            }
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="DienThoai" class="mb-0">Điện Thoại</label>
+                            @Html.TextBoxFor(m => m.DienThoai, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DienThoai, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="DiaChi" class="mb-0">Địa Chỉ</label>
+                            @Html.TextBoxFor(m => m.DiaChi, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+                        </div>
+                        <div class=" form-group col-md-12">
+                            <label for="MatKhau" class="mb-0">Mật Khẩu</label>
+                            @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="ConfirmPassword" class="mb-0">Nhập Lại Mật Khẩu</label>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <button type="submit" name="submit" style="color: white;" class="btn hvr-hover">Đăng Ký</button>
+                }
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+@*<div class="cart-box-main">
+        <div class="container">
+            <div class="row new-account-login">
+
+                <div class="col-sm-12 col-lg-12 mb-3">
+                    <div class="title-left" style="text-align: center;">
+                        <h3>Đăng Ký</h3>
+                    </div>
+
+                    <form class="mt-3">
+                        <div class="form-row">
+
+                            <div class="form-group col-md-6">
+                                <label for="InputLastname" class="mb-0">Họ Và Tên</label>
+                                <input type="text" class="form-control" id="InputLastname" placeholder="Họ Và Tên">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="InputEmail1" class="mb-0">Email </label>
+                                <input type="email" class="form-control" id="InputEmail1" placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="InputLastname" class="mb-0">Số Điện Thoại</label>
+                                <input type="text" class="form-control" id="InputLastname" placeholder="Số Điện Thoại">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="InputLastname" class="mb-0">Địa Chỉ</label>
+                                <input type="text" class="form-control" id="InputLastname" placeholder="Địa Chỉ">
+                            </div>
+                            <div class=" form-group col-md-6">
+                                <label for="InputPassword1" class="mb-0">Mật Khẩu</label>
+                                <input type="password" class="form-control" id="InputPassword1" placeholder="Mật Khẩu">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="InputPassword1" class="mb-0">Nhập Lại Mật Khẩu</label>
+                                <input type="password" class="form-control" id="InputPassword1" placeholder="Mật Khẩu">
+                            </div>
+                        </div>
+                        <button type="submit" style="color: white;" class="btn hvr-hover">Đăng Ký</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>*@
+
+<!-- End Cart -->

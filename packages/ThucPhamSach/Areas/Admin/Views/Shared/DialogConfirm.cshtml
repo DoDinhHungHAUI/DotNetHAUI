@@ -1,0 +1,385 @@
+﻿<div class="dialog-confirm-model">
+    <div class="wrap-dialog-confirm"></div>
+    <div class="m-dialog-confirm">
+        <div class="content-dialog-confirm">
+            <div class="icon-dialog-confirm">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="text-dialog-confirm">Bạn có chắc muốn xóa sản phẩm này ?</div>
+        </div>
+
+        <div class="button-dialog-confirm">
+            <button class="m-btn-cancel btn-out-line" id="btnHideDialogConfirm">Không</button>
+            <button class="m-btn m-btn-delete btn-delete-record" id="btnDeleteRecord">Xóa</button>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .showDialogConfirm{
+        display:block !important;
+    }
+    /*Button*/
+    .m-btn {
+        display: flex;
+        align-items: center;
+        background-color: #1aa4c8;
+        border-radius: 4px;
+        height: 36px;
+        font-size: 13px;
+        color: #ffffff;
+        font-family: GoogleSans;
+        /* padding-left : 16px;
+    padding-right : 16px; */
+        outline: none;
+        border: none;
+        cursor: pointer;
+        padding: 0px;
+    }
+
+
+    .m-btn-cancel {
+        padding: 0 24px;
+        border-radius: 4px;
+        margin-right: 10px;
+        background-color: #E5E5E5;
+        outline: none;
+        border: none;
+        height: 36px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+    .m-btn-cancel:hover {
+        background-color: #BBBBBB;
+    }
+
+    .btn-out-line {
+        background-color: #ffffff !important;
+        border: 1px solid #BBBBBB !important;
+        color: black;
+        font-size:13px;
+    }
+
+        .btn-out-line:hover {
+            background-color: #1aa4c8 !important;
+            color: #ffffff !important;
+            border: none !important;
+        }
+
+
+
+    /* Dialog */
+    .m-popup {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 3;
+    }
+
+    .wrap-popup {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #454545;
+        opacity: 0.4;
+    }
+
+    .popup-info-assets {
+        /* width: 900px; */
+        /* height: calc(100vh - 48px); */
+        /* height: calc(100vh - 153px); */
+        /* height: calc(100vh - 142px);
+
+    background-color: #ffffff;
+    position: absolute; */
+        /* top: 24px; */
+        /* top: calc(50% - 297px);
+    left: calc(50% - 450px);
+    border-radius: 4px; */
+
+        width: 950px;
+        /* height: calc(100vh - 48px); */
+        /* height: calc(100vh - 153px); */
+        height: calc(100vh - 117px);
+        background-color: #ffffff;
+        position: absolute;
+        /* top: 24px; */
+        top: calc(50%);
+        left: calc(50%);
+        border-radius: 4px;
+        transform: translate(-50%, -50%);
+    }
+
+        .popup-info-assets .header-popup {
+            font-size: 15px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-left: 16px;
+            color: #000000;
+            font-size: 20px;
+        }
+
+        .popup-info-assets .close-popup {
+            background-position: center;
+            background-image: url(../../icon/x.svg);
+            background-repeat: no-repeat;
+            width: 24px;
+            height: 24px;
+            background-size: 16px;
+            position: absolute;
+            /* right: 0px;
+    top: 0px; */
+            right: 16px;
+            top: 20px;
+            cursor: pointer;
+            background-color: #ffffff;
+            outline: none;
+            border: none;
+        }
+
+            .popup-info-assets .close-popup:hover {
+                background-color: #E5E5E5;
+            }
+
+    /*Content popup*/
+
+    .content-popup {
+        /* height: calc(100vh - 157px); */
+        /* height: calc(100vh - 262px); */
+        /* height: calc(100vh - 242px); */
+        height: calc(100vh - 218px);
+        width: 100%;
+        /* display: flex; */
+    }
+
+        .content-popup .form-fixedAsset-right {
+            display: flex;
+        }
+
+        .content-popup .left-content-popup {
+            height: 100%;
+            /* width: 300px; */
+            width: 316.6px;
+        }
+
+        .content-popup .right-content-popup {
+            height: 100%;
+            width: 633.3px;
+        }
+
+    /*Footer popup*/
+
+    .popup-info-assets .footer-popup {
+        border-bottom-left-radius: 4px;
+        width: 100%;
+        height: 56px;
+        background-color: #E5E5E5;
+        border-bottom-right-radius: 4px;
+    }
+
+        .popup-info-assets .footer-popup .wrap-button-footer {
+            display: flex;
+            position: absolute;
+            right: 16px;
+        }
+
+    .popup-info-assets .input-form {
+        /* margin-left: 24px;
+    margin-top: 16px; */
+        margin-left: 16px;
+    }
+
+    .popup-info-assets .form-fixedAsset-right .input-form-left {
+        margin-left: 16px;
+    }
+
+    .popup-info-assets .form-fixedAsset-right .input-form-right {
+        margin-left: 16px;
+    }
+
+    .popup-info-assets .input-form {
+        margin-left: 16px;
+    }
+
+        .popup-info-assets .input-form.input-form-flex {
+            display: flex;
+        }
+
+    .popup-info-assets .input-form-flex .input-form-right {
+        margin-left: 16px;
+    }
+
+    .popup-info-assets .input-form-typenumber {
+        position: relative;
+    }
+
+    .popup-info-assets .first-input-form {
+        margin-top: 24px;
+    }
+
+    .m-combobox-popup {
+        margin-left: 0px;
+        margin-top: 8px;
+        height: 36px;
+        /* width: 278.6px !important; */
+        width: 295.3px;
+    }
+
+    .m-combobox input {
+        border-radius: 4px 0px 0px 4px !important;
+    }
+
+    .m-popup .content-popup .input-form .icon-top {
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        background-image: url(../../icon/icon-top.png);
+        background-repeat: no-repeat;
+        right: 16px;
+        top: 34px;
+        background-size: 7px 5px;
+        cursor: pointer;
+        background-position: center;
+    }
+
+
+    .m-popup .content-popup .input-form .icon-down {
+        position: absolute;
+        width: 10px;
+        height: 7px;
+        background-image: url(../../icon/icon-down.png);
+        background-repeat: no-repeat;
+        right: 16px;
+        top: 45px;
+        background-size: 8px 5px;
+        background-position: center;
+        cursor: pointer;
+    }
+
+    .m-popup .content-popup .input-form .icon-top:hover {
+        background-color: #bbbbbb !important;
+    }
+
+    .m-popup .content-popup .input-form .icon-down:hover {
+        background-color: #bbbbbb !important;
+    }
+
+
+    /* Dialog confirm khi xóa */
+
+    .dialog-confirm-model {
+        display:none;
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 101;
+    }
+
+    .wrap-dialog-confirm {
+        width: 100%;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #454545;
+        opacity: 0.4;
+    }
+
+    .m-dialog-confirm {
+        width: 350px;
+        height: 174px;
+        position: absolute;
+        left: calc(50% - 175px);
+        top: calc(50% - 87px);
+        background-color: #ffffff;
+        border-radius: 4px;
+    }
+
+
+        .m-dialog-confirm .content-dialog-confirm {
+            display: flex;
+            align-items: center;
+            margin-top: 54px;
+        }
+
+        .m-dialog-confirm .icon-dialog-confirm {
+            width: 24px;
+            height: 24px;
+            margin-left: 24px;
+            background-image: url('../../icon/icon_warning.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .m-dialog-confirm .content-dialog-confirm .text-dialog-confirm {
+            color: #000000;
+            font-size: 13px;
+            margin-left: 10px;
+            margin-right: 24px;
+            width: 270px;
+        }
+
+        .m-dialog-confirm .button-dialog-confirm {
+            position: absolute;
+            height: 56px;
+            width: 100%;
+            /* background-color: #E5E5E5; */
+            margin-top: 24px;
+            border-bottom-left-radius: 4px;
+            border-bottom-right-radius: 4px;
+            justify-content: flex-end;
+            display: flex;
+            bottom: 0px;
+        }
+
+    .button-dialog-confirm .m-btn-delete {
+        padding-left: 24px;
+        padding-right: 24px;
+        margin-right: 16px;
+        margin-top: 10px;
+        background-color: #1aa4c8;
+    }
+
+        .button-dialog-confirm .m-btn-delete:hover {
+            background-color: #0582a2;
+        }
+
+        .button-dialog-confirm .m-btn-delete:active {
+            background-color: #28b7dc;
+        }
+
+    /* .m-popup .m-combobox-input::placeholder{
+    font-family: 'Roboto Regular';
+    font-size: 13pt !important;
+} */
+
+    .form-fixedAsset-first {
+        margin-top: 0px !important;
+    }
+
+    .form-fixedAsset {
+        margin-top: 20px;
+        display: flex;
+    }
+</style>

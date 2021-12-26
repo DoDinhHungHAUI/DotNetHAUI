@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ThucPhamSach.Models.HoaDon>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmim.cshtml";
+}
+
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <!-- DATA TABLE -->
+            <h3 class="title-5 m-b-35">Quản Lý Danh Sách Đơn Hàng</h3>
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+
+                </div>
+                <div class="table-data__tool-right">
+
+                </div>
+            </div>
+
+            <div class="table-responsive table-responsive-data2">
+                <table class="table table-data2">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>Tên Khách Hàng</th>
+
+                            <th>Địa Chỉ</th>
+                            <th>Thời Gian Tạo Đơn</th>
+                            <th>Tổng Tiền</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr class="tr-shadow">
+                                <td>
+                                    <a href="@Url.Action("Details", "ChiTietHoaDons",new { id=@item.MaTK})">@Html.DisplayFor(modelItem => item.MaTK)</a>
+                                </td>
+                                <td><a>@Html.DisplayFor(modelItem => item.TaiKhoan.HoTen)</a></td>
+                                <td>
+                                    <span>@Html.DisplayFor(modelItem => item.DiaChi)</span>
+                                <td>@Html.DisplayFor(modelItem => item.NgayDat)</td>
+                                <td>@Html.DisplayFor(modelItem => item.TongTien)</td>
+
+
+
+
+                                <td>
+                                    <div class="table-data-feature">
+
+                                        <button class="item" data-toggle="tooltip" data-placement="top"
+                                                title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+
+
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+</div>
+
+
+

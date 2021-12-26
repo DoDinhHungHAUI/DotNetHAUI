@@ -1,0 +1,54 @@
+﻿<!-- Start Main Top -->
+<div class="main-top">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+
+                <div class="right-phone-box">
+                    <p>Call US :- <a href="#"> +84 12345678</a></p>
+                </div>
+                <div class="our-link">
+                    <ul>
+                        @*<li><a href="@Url.Action("ChangeInfoUser" , "Home")"><i class="fa fa-user s_color"></i>Tài Khoản</a></li>*@
+                        <li><a href="#"><i class="fas fa-headset"></i> Liên Hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="login-box" style="
+                        width: 215px;
+                    ">
+                    <ul style="display: flex;">
+
+                        <li style="margin-right : 25px">
+                            <div class="search-product">
+                                @using (Html.BeginForm("Search", "Product", FormMethod.Get))
+                                {
+                                    <input class="form-control" name="keyword" placeholder="Tím kiếm..." type="text">
+                                    <button type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                }
+                            </div>
+                        </li>
+
+                        <li style="margin-right: 25px;">
+                            @Html.ActionLink(@HttpContext.Current.Session["HoTen"].ToString(), "ChiTiet", "Home", new { id = @HttpContext.Current.Session["idUser"].ToString() }, new { @style = "font-size: 14px;color:white" });
+                        </li>
+                        <li style="margin-right: 25px;">
+                            @Html.ActionLink("Đăng Xuất", "DangXuat", "Home", null, new { @style = "font-size: 14px;color:white" });
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="text-slid-box">
+                    <div id="offer-box" class="carouselTicker">
+                        <ul class="offer-box">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Main Top -->

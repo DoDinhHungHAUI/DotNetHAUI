@@ -1,0 +1,132 @@
+﻿
+@model ThucPhamSach.Models.TaiKhoan
+
+
+@{
+    ViewBag.Title = "SuaThongTinTaiKhoan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="cart-box-main">
+    <div class="container">
+        <div class="row new-account-login">
+
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left" style="text-align: center;">
+                    <h3>Sửa thông tin tài khoản</h3>
+                </div>
+
+                @using (Html.BeginForm("SuaThongTinTaiKhoan", "Home", FormMethod.Post, new { @class = "mt-3" }))
+                {
+                    //@Html.ValidationSummary()
+                    @Html.AntiForgeryToken()
+                    <div class="form-row">
+
+                        @Html.HiddenFor(m => m.MaTK)
+
+                        <div class="form-group col-md-12">
+                            <label for="HoTen" class="mb-0">Họ Và Tên</label>
+                            @Html.TextBoxFor(m => m.HoTen, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.HoTen, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="HoTen" class="mb-0">Tên Tài Khoản</label>
+                            @Html.TextBoxFor(m => m.Ten, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Ten, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="Email" class="mb-0">Email</label>
+                            @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            @if (ViewBag.error != null)
+                            {
+                                <span class="text-danger">@ViewBag.error</span>
+                            }
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="DienThoai" class="mb-0">Điện Thoại</label>
+                            @Html.TextBoxFor(m => m.DienThoai, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DienThoai, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="DiaChi" class="mb-0">Địa Chỉ</label>
+                            @Html.TextBoxFor(m => m.DiaChi, "", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DiaChi, "", new { @class = "text-danger" })
+                        </div>
+                        @*<div class=" form-group col-md-12">
+                            <label for="MatKhau" class="mb-0">Mật Khẩu</label>
+                            @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.MatKhau, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="ConfirmPassword" class="mb-0">Nhập Lại Mật Khẩu</label>
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                        </div>*@
+                    </div>
+                    <button type="submit" name="submit" style="color: white;" class="btn hvr-hover">Lưu</button>
+                }
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+<!--<div class="cart-box-main">
+    <div class="container">
+        <div class="row new-account-login">
+
+            <div class="col-sm-12 col-lg-12 mb-3">
+                <div class="title-left" style="text-align: center;">
+                    <h3>Thay đổi mật khẩu</h3>
+                </div>
+
+                <form class="mt-3">
+                    <div class="form-row form-change-password">
+
+                        <div class="form-group col-md-6">
+                            <input type="text" class="form-control" placeholder="Mật khẩu cũ">
+                        </div>-->
+@*<div class="form-group col-md-6">
+        <input type="text" class="form-control" id="InputLastname" placeholder="Số Điện Thoại">
+    </div>
+    <div class="form-group col-md-6">
+        <input type="text" class="form-control" id="InputLastname" placeholder="Địa Chỉ">
+    </div>*@
+@*<div class=" form-group col-md-6">
+        <input type="password" class="form-control" id="InputPassword1" placeholder="Mật Khẩu">
+    </div>
+    <div class="form-group col-md-6">
+        <input type="password" class="form-control" id="InputPassword1" placeholder="Mật Khẩu">
+    </div>*@
+<!--</div>
+                    <div class="form-row form-change-password">
+                        <div class="form-group col-md-6">
+                            <input type="password" class="form-control" placeholder="Mật khẩu mới">
+                        </div>
+                    </div>
+                    <div class="form-row form-change-password">
+                        <div class="form-group col-md-6">
+                            <input type="password" class="form-control" placeholder="Nhập lại mật khẩu">
+                        </div>
+                    </div>
+                    <button type="submit" style="color: white;" class="btn hvr-hover form-change-password">Thay đổi</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>-->
+
+<style>
+    .form-change-password {
+        margin-left: 35% !important;
+    }
+</style>
+

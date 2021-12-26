@@ -1,0 +1,39 @@
+﻿@model ThucPhamSach.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "DangNhap";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmim1.cshtml";
+}
+<div class="row justify-content-md-center">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                Đăng Nhập
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("DangNhap", "Homes", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email)
+                        @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                    </div>
+                    <div class="form-group">
+                        <label for="MatKhau" class="mb-0">Mật Khẩu</label>
+                        @Html.PasswordFor(m => m.MatKhau, new { @class = "form-control", @placeholder = "Password" })
+                    </div>
+                    if (ViewBag.error != null)
+                    {
+                        <span class="text-danger">@ViewBag.error</span>
+                    }
+                    <div class="form-group">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<h2>DangNhap</h2>
+

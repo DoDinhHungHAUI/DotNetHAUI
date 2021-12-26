@@ -1,0 +1,317 @@
+﻿
+@model ThucPhamSach.Infrastructure.Core.PaginationSet<ThucPhamSach.Models.SanPham>
+
+@{
+    ViewBag.Title = "ProductCategory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@section SliderDetail{
+    <!-- Start All Title Box -->
+    @*<div class="all-title-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Shop Detail</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                            <li class="breadcrumb-item active">Shop Detail </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <!-- End All Title Box -->
+}
+
+<!-- Start Shop Page  -->
+
+<div class="shop-box-inner">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
+                <div class="right-product-box">
+
+                    <div class="product-item-filter row">
+                        <div class="col-12 col-sm-8 text-center text-sm-left">
+                            <div class="toolbar-sorter-right">
+                                <span>Sắp xếp</span>
+                                 
+                                <div class="filter-data-condition">
+                                    <div class="text-sort" style="text-indent:15px">
+                                        @{
+                                            var text = "";
+                                            if (ViewBag.SapXep == "giaBan")
+                                            {
+                                                text = "Giá bán";
+                                            }
+                                            else
+                                            {
+                                                text = "Tên sản phẩm";
+                                            }
+                                        }
+                                        @text
+                                    </div>
+                                    <div class="btn-sort" id="btnSort">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="wrap-sort" id="wrap-sort">
+                                    <div class="sort-by-price">
+                                        <a class="link-sort" href="@Url.Action("ProductCategory" , "Product" , new { id = ViewBag.id , sort = "giaBan"})">Giá bán</a>
+                                    </div>
+                                    <div class="sort-by-name">
+                                        <a class="link-sort" href="@Url.Action("ProductCategory" , "Product" , new { id = ViewBag.id , sort = "tensanPham"})">Tên sản phẩm</a>
+                                    </div>
+                                </div>
+
+                                @*<a href="@Url.Action("Search" , "Product" , new { sort = "giaban"})">Giá bán</a>
+                                <a href="@Url.Action("Search" , "Product" , new {sort = "tensp"})">Tên sản phẩm</a>*@
+                                @*<select id="basic" class="selectpicker show-tick form-control">
+                                        <option>
+                                            <a href="@Url.Action("Search" , "Product" , new { sort = "giaban"})">Giá bán</a>
+                                        </option>
+                                        <option value="1">Popularity</option>
+                                        <option value="2">High Price → High Price</option>
+                                        <option value="3">Low Price → High Price</option>
+                                        <option value="4">Best Selling</option>
+                                    </select>*@
+                            </div>
+                        </div>
+                        @*<div class="col-12 col-sm-4 text-center text-sm-right">
+                            <ul class="nav nav-tabs ml-auto">
+                                <li>
+                                    <a class="nav-link active" href="#grid-view" data-toggle="tab">
+                                        <i class="fa fa-th"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="#list-view" data-toggle="tab">
+                                        <i class="fa fa-list-ul"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>*@
+                    </div>
+
+                    @if (Model.Count > 0)
+                    {
+                        <div class="product-categorie-box">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+                                    <div class="row">
+                                        @foreach (var item in Model.Items)
+                                        {
+                                            <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                <div class="products-single fix">
+                                                    <div class="box-img-hover">
+                                                        <div class="type-lb">
+                                                            <p class="sale">Giảm giá</p>
+                                                        </div>
+                                                        @{
+                                                            string imagePath = "~/wwwroot/images/" + item.Anh;
+                                                        }
+                                                        <img src="@Url.Content(imagePath)" class="img-fluid" alt="Image">
+
+                                                        <div class="mask-icon">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="@Url.Action("ProductDetail","Product" , new { id = item.MaSP})" data-toggle="tooltip" data-placement="right"
+                                                                       title="View"><i class="fas fa-eye"></i></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="right"
+                                                                       title="Compare"><i class="fas fa-sync-alt"></i></a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" data-toggle="tooltip" data-placement="right"
+                                                                       title="Add to Wishlist">
+                                                                        <i class="far fa-heart"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                            <a class="cart" href="/Them-Gio-Hang?maSp=@item.MaSP&soLuong=1">Thêm vào giỏ hàng</a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="why-text">
+                                                        <a href="@Url.Action("ProductDetail","Product" , new { id = item.MaSP})">
+                                                            <a href="@Url.Action("ProductDetail","Product" ,new { id = item.MaSP})">
+                                                                <h4>@item.TenSanPham</h4>
+                                                            </a>
+                                                        </a>
+                                                        <h5>
+                                                            @string.Format("{0:#,###}", item.GiaBan) VNĐ
+                                                        </h5>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center">Không có bản ghi nào được tìm thấy.</div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
+                <div class="product-categori">
+                    <div class="filter-sidebar-left">
+                        <div class="title-left">
+                            <h3>Danh mục sản phẩm</h3>
+                        </div>
+                        <div class="list-group list-group-collapse list-group-sm list-group-tree" id="list-group-men" data-children=".sub-men">
+
+                            @foreach (var item in ViewBag.danhMucs)
+                            {
+                                if (ViewBag.idProductCategory == item.GetType().GetProperty("MaDanhMuc").GetValue(item))
+                                {
+                                    <a class="active-nav-category list-group-item list-group-item-action" href="@Url.Action("ProductCategory" , "Product" , new { id = item.GetType().GetProperty("MaDanhMuc").GetValue(item)})"
+                                       aria-expanded="true" aria-controls="sub-men1">
+                                        @item.GetType().GetProperty("TenDanhMuc").GetValue(item) <small class="text-muted">(@item.GetType().GetProperty("SLSanPham").GetValue(item))</small>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="list-group-item list-group-item-action" href="@Url.Action("ProductCategory" , "Product" , new { id = item.GetType().GetProperty("MaDanhMuc").GetValue(item)})"
+                                       aria-expanded="true" aria-controls="sub-men1">
+                                        @item.GetType().GetProperty("TenDanhMuc").GetValue(item) <small class="text-muted">(@item.GetType().GetProperty("SLSanPham").GetValue(item))</small>
+                                    </a>
+                                }
+
+                            }
+
+                            @*<a class="list-group-item list-group-item-action" href="#sub-men2"
+                                   aria-expanded="false" aria-controls="sub-men2">
+                                    Thực phẩm tươi sống
+                                    <small class="text-muted">(50)</small>
+                                </a>
+
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Thực phẩm khô <small class="text-muted">(150) </small>
+                                </a>
+
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    Thực phẩm đóng hộp <small class="text-muted">(22)</small>
+                                </a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @if (Model.TotalPages > 1)
+        {
+            //Create numeric links
+            var startPageIndex = Math.Max(1, Model.Page - Model.MaxPage / 2);
+            var endPageIndex = Math.Min(Model.TotalPages, Model.Page + Model.MaxPage / 2);
+
+            <div style="text-align: center">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+
+                        @if (Model.Page > 1)
+                        {
+                            <li class="page-item">
+                                <a class="?page=1 page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id ,page = 1 , sort = ViewBag.SapXep})" aria-label="First">
+                                    <i class="fas fa-angle-double-left"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id ,page = Model.Page - 1 , sort = ViewBag.SapXep})" aria-label="Previous">
+                                    <i class="fas fa-angle-left"></i>
+                                </a>
+                            </li>
+                        }
+                        @for (int i = startPageIndex; i <= endPageIndex; i++)
+                        {
+                            if (Model.Page == i)
+                            {
+                                <li class="active page-item"><a href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = i ,sort = ViewBag.SapXep})" class="page-link" title="trang @i">@i</a></li>
+                            }
+                            else
+                            {
+                                <li class="page-item"><a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = i ,sort = ViewBag.SapXep})" title="Trang @i">@i</a></li>
+                            }
+                        }
+
+                        @if (Model.Page < Model.TotalPages)
+                        {
+                            <li>
+                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new { id = ViewBag.id , page = Model.Page + 1 ,sort = ViewBag.SapXep})" aria-label="Next">
+                                    <i class="fas fa-angle-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = Model.TotalPages ,sort = ViewBag.SapXep})" aria-label="Last">
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+<!-- End Shop Page -->
+<!-- Start Instagram Feed  -->
+@*<div class="instagram-box">
+        <div class="main-instagram owl-carousel owl-theme">
+
+            @foreach (var item in Model)
+            {
+                <div class="item">
+                    <div class="ins-inner-box">
+                        @{
+                            string imagePath = "~/wwwroot/images/" + item.Anh;
+                        }
+
+                        <img src="@Url.Content(imagePath)" alt="" class="image-carosel" />
+                        <div class="hov-in">
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>*@
+<!-- End Instagram Feed  -->
+
+
+<style>
+    .image-carosel {
+        height: 295px !important;
+    }
+
+    .img-fluid {
+        height: 205px !important;
+    }
+
+    .active-nav-category {
+        font-weight: 700;
+    }
+</style>
+
+<script>
+
+    var btnSort = document.getElementById("btnSort")
+    btnSort.addEventListener("click", function () {
+        var wrapSort = document.getElementById("wrap-sort")
+        wrapSort.classList.toggle("showWrapSort")
+    })
+
+
+
+</script>

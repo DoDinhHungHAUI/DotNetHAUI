@@ -1,0 +1,163 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmim.cshtml";
+}
+
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="col-md-12">
+            <!-- DATA TABLE -->
+            <h3 class="title-5 m-b-35">Quản Lý Danh Sách Đơn Hàng</h3>
+            <div class="table-data__tool">
+                <div class="table-data__tool-left">
+
+                </div>
+                <div class="table-data__tool-right">
+
+                </div>
+            </div>
+
+            <div class="table-responsive table-responsive-data2">
+                <table class="table table-data2">
+                    <thead>
+                        <tr>
+                            <th>
+                                ID
+                            </th>
+                            <th>Tên Khách Hàng</th>
+
+                            <th>Địa Chỉ</th>
+                            <th>Thời Gian Tạo Đơn</th>
+                            <th>Tổng Tiền</th>
+
+                            <th>Tình Trạng </th>
+
+
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="tr-shadow">
+                            <td>
+                                1
+                            </td>
+                            <td><a href="@Url.Action("Detail", "OrderManager")">Nguyễn Văn A</a></td>
+                            <td>
+                                <span>Trần Duy Hưng, Cầu Giấy, Hà Nội</span>
+                            <td>2018-09-27 02:12</td>
+                            <td>20.000 VNĐ</td>
+
+                            <td>
+                                <span class="status--process">Hoạt Động</span>
+                            </td>
+
+
+                            <td>
+                                <div class="table-data-feature">
+
+                                    <button class="item" data-toggle="tooltip" data-placement="top"
+                                            title="Edit">
+                                        <i class="zmdi zmdi-edit"></i>
+                                    </button>
+
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                            <td>
+                                2
+                            </td>
+                            <td><a href="@Url.Action("Detail", "OrderManager")">Nguyễn Văn A</a></td>
+                            <td>
+                                <span>Trần Duy Hưng, Cầu Giấy, Hà Nội</span>
+                            </td>
+
+                            <td>2018-09-29 05:57</td>
+                            <td> 20.000 VNĐ</td>
+                            <td>
+                                <span class="status--process">Hoạt Động</span>
+                            </td>
+
+
+
+                            <td>
+                                <div class="table-data-feature">
+
+                                    <button class="item" data-toggle="tooltip" data-placement="top"
+                                            title="Edit">
+                                        <i class="zmdi zmdi-edit"></i>
+                                    </button>
+
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                            <td>
+                                3
+                            </td>
+                            <td><a href="@Url.Action("Detail", "OrderManager")">Nguyễn Văn A</a></td>
+                            <td>
+                                <span>Trần Duy Hưng, Cầu Giấy, Hà Nội</span>
+
+                            <td>2018-09-25 19:03</td>
+                            <td> 20.000 VNĐ</td>
+                            <td>
+                                <span class="status--denied">Đã Xóa</span>
+                            </td>
+
+
+                            <td>
+                                <div class="table-data-feature">
+
+                                    <button class="item" data-toggle="tooltip" data-placement="top"
+                                            title="Edit">
+                                        <i class="zmdi zmdi-edit"></i>
+                                    </button>
+
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="spacer"></tr>
+                        <tr class="tr-shadow">
+                            <td>
+                                4
+                            </td>
+                            <td><a href="@Url.Action("Detail", "OrderManager")">Nguyễn Văn A</a></td>
+                            <td>
+                                <span>Trần Duy Hưng, Cầu Giấy, Hà Nội</span>
+
+                            <td>2018-09-24 19:10</td>
+                            <td> 20.000 VNĐ</td>
+                            <td>
+                                <span class="status--process">Hoạt Động</span>
+                            </td>
+
+
+                            <td>
+                                <div class="table-data-feature">
+
+                                    <button class="item" data-toggle="tooltip" data-placement="top"
+                                            title="Edit">
+                                        <i class="zmdi zmdi-edit"></i>
+                                    </button>
+
+
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- END DATA TABLE -->
+        </div>
+    </div>
+</div>
+
+

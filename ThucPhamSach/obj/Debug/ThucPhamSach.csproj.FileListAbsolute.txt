@@ -1,3 +1,4 @@
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csproj.CoreCompileInputs.cache
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\ThucPhamSach.dll.config
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\ThucPhamSach.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\ThucPhamSach.pdb
@@ -51,6 +52,8 @@ F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\roslyn\v
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\roslyn\VBCSCompiler.exe
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\roslyn\VBCSCompiler.exe.config
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\Antlr3.Runtime.dll
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.dll
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.SqlServer.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\Microsoft.Web.Infrastructure.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\Newtonsoft.Json.dll
@@ -62,6 +65,8 @@ F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\System.W
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\System.Web.WebPages.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\System.Web.WebPages.Razor.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\WebGrease.dll
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.xml
+F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.SqlServer.xml
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\System.Web.Helpers.xml
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\System.Web.Mvc.xml
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\System.Web.Optimization.xml
@@ -72,12 +77,7 @@ F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\System.W
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\Newtonsoft.Json.xml
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\Antlr3.Runtime.pdb
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csproj.CoreCompileInputs.cache
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csproj.CopyComplete
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.dll
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.pdb
-F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.dll
-F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.SqlServer.dll
-F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.xml
-F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\bin\EntityFramework.SqlServer.xml
 F:\API_NET\ASP.NET_Tren_Lop\BTLASP\Layout\ThucPhamSach\ThucPhamSach\obj\Debug\ThucPhamSach.csprojAssemblyReference.cache

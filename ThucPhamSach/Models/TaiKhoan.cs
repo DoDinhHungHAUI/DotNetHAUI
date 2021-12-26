@@ -18,27 +18,31 @@ namespace ThucPhamSach.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int? MaTK { get; set; }
 
-        [Required]
+
         [StringLength(100)]
+        [Required(ErrorMessage = "Vui nh?p h? và tên")]
         public string HoTen { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui nh?p tên")]
         [StringLength(50)]
         public string Ten { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "Vui lòng nh?p email")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress(ErrorMessage = "Vui lòng nh?p email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui nh?p ?i?n tho?i")]
+        [RegularExpression(@"^(\d{10,11})$", ErrorMessage = "Vui lòng nh?p s? ?i?n tho?i")]
         [StringLength(50)]
         public string DienThoai { get; set; }
 
-        [Required]
-        [StringLength(100)]
+        [Required(ErrorMessage = "Vui nh?p m?t kh?u")]
+        [DataType(DataType.Password)]
+        [StringLength(20, ErrorMessage = "M?t kh?u ph?i t? 5 ??n 20 ký t? ", MinimumLength = 5)]
         public string MatKhau { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Vui nh?p ??a ch?")]
         [StringLength(100)]
         public string DiaChi { get; set; }
 
@@ -50,6 +54,13 @@ namespace ThucPhamSach.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HoaDon> HoaDons { get; set; }
 
+
+
         public virtual PhanQuyen PhanQuyen { get; set; }
+
+        [NotMapped]
+        [Required(ErrorMessage = "Vui nh?p m?t kh?u")]
+        [Compare("MatKhau", ErrorMessage = "M?t kh?u không trùng nhau")]
+        public string ConfirmPassword { get; set; }
     }
 }

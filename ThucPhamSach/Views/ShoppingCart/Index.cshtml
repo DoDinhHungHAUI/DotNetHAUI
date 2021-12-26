@@ -1,4 +1,4 @@
-﻿
+﻿@model List<ThucPhamSach.Infrastructure.Core.CartItem>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,191 +6,28 @@
 
 @section SliderDetail{
     <!-- Start All Title Box -->
-    <div class="all-title-box">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2>Shop Detail</h2>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                        <li class="breadcrumb-item active">Shop Detail </li>
-                    </ul>
+    @*<div class="all-title-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Shop Detail</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                            <li class="breadcrumb-item active">Shop Detail </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>*@
     <!-- End All Title Box -->
 }
 
 
+@section jsFooter{
 
-<!-- Start Cart  -->
-<div class="cart-box-main">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="table-main table-responsive">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Hình ảnh</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Giá</th>
-                                <th>Số lượng</th>
-                                <th>Tổng tiền</th>
-                                <th>Xóa</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="shop-detail.html">
-                                        <img class="img-fluid" src="./wwwroot/images/img-pro-01.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="">
-                                        Cà rốt
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>120.000 vnđ</p>
-                                </td>
-                                <td class="quantity-box">
-                                    <input type="number" size="4" value="1" min="0" step="1"
-                                           class="c-input-text qty text">
-                                </td>
-                                <td class="total-pr">
-                                    <p>120.000 vnđ</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="shop-detail.html">
-                                        <img class="img-fluid" src="./wwwroot/images/img-pro-02.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Cà chua
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>100.000 vnđ</p>
-                                </td>
-                                <td class="quantity-box">
-                                    <input type="number" size="4" value="1" min="0" step="1"
-                                           class="c-input-text qty text">
-                                </td>
-                                <td class="total-pr">
-                                    <p>120.000 vnđ</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="thumbnail-img">
-                                    <a href="shop-detail.html">
-                                        <img class="img-fluid" src="./wwwroot/images/img-pro-03.jpg" alt="" />
-                                    </a>
-                                </td>
-                                <td class="name-pr">
-                                    <a href="#">
-                                        Nho
-                                    </a>
-                                </td>
-                                <td class="price-pr">
-                                    <p>120.000 vnđ</p>
-                                </td>
-                                <td class="quantity-box">
-                                    <input type="number" size="4" value="1" min="0" step="1"
-                                           class="c-input-text qty text">
-                                </td>
-                                <td class="total-pr">
-                                    <p>120.000 vnđ</p>
-                                </td>
-                                <td class="remove-pr">
-                                    <a href="#">
-                                        <i class="fas fa-times"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <script src="\wwwroot\js\cart.js"></script>
+}
 
-        <div class="row my-5">
-            <div class="col-lg-6 col-sm-6">
-                <div class="coupon-box">
-                    <div class="input-group input-group-sm">
-                        <input class="form-control" placeholder="Nhập mã mua hàng" aria-label="Coupon code"
-                               type="text">
-                        <div class="input-group-append">
-                            <button class="btn btn-theme" type="button">Nhập mã</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-sm-6">
-                <div class="update-box">
-                    <input value="Update Cart" type="submit">
-                </div>
-            </div>
-        </div>
-        <div class="row my-5">
-            <div class="col-lg-8 col-sm-12"></div>
-            <div class="col-lg-4 col-sm-12">
-                <div class="order-box">
-                    <h3>Đơn hàng</h3>
-                    <div class="d-flex">
-                        <h4>Tổng tiền</h4>
-                        <div class="ml-auto font-weight-bold"> 360.000 Vnđ </div>
-                    </div>
-                    <div class="d-flex">
-                        <h4>Giảm giá</h4>
-                        <div class="ml-auto font-weight-bold"> 20.000 Vnđ </div>
-                    </div>
-                    <hr class="my-1">
-                    <div class="d-flex">
-                        <h4>Phiếu giảm giá </h4>
-                        <div class="ml-auto font-weight-bold"> 15.000 Vnđ </div>
-                    </div>
-                    <div class="d-flex">
-                        <h4>thuế</h4>
-                        <div class="ml-auto font-weight-bold"> 10.000 Vnđ </div>
-                    </div>
-                    <div class="d-flex">
-                        <h4>Phí vận chuyển</h4>
-                        <div class="ml-auto font-weight-bold"> Miễn phí </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex gr-total">
-                        <h5>Tổng cộng</h5>
-                        <div class="ml-auto h5"> 300.000 Vnđ </div>
-                    </div>
-                    <hr>
-                </div>
-            </div>
-            <div class="col-12 d-flex shopping-box">
-                <a href="checkout.html"
-                   class="ml-auto btn hvr-hover">Thanh toán</a>
-            </div>
-        </div>
-
-    </div>
-</div>
-<!-- End Cart -->
-<!-- Start Instagram Feed  -->
 <div class="instagram-box">
     <div class="main-instagram owl-carousel owl-theme">
         <div class="item">
@@ -275,4 +112,259 @@
         </div>
     </div>
 </div>
+
+
+
+
+<!-- Start Cart  -->
+@*<div class="cart-box-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="table-main table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Giá</th>
+                                    <th>Số lượng</th>
+                                    <th>Tổng tiền</th>
+                                    <th>Xóa</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        <a href="shop-detail.html">
+                                            <img class="img-fluid" src="./wwwroot/images/img-pro-01.jpg" alt="" />
+                                        </a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="">
+                                            Cà rốt
+                                        </a>
+                                    </td>
+                                    <td class="price-pr">
+                                        <p>120.000 vnđ</p>
+                                    </td>
+                                    <td class="quantity-box">
+                                        <input type="number" size="4" value="1" min="0" step="1"
+                                               class="c-input-text qty text">
+                                    </td>
+                                    <td class="total-pr">
+                                        <p>120.000 vnđ</p>
+                                    </td>
+                                    <td class="remove-pr">
+                                        <a href="#">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        <a href="shop-detail.html">
+                                            <img class="img-fluid" src="./wwwroot/images/img-pro-02.jpg" alt="" />
+                                        </a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="#">
+                                            Cà chua
+                                        </a>
+                                    </td>
+                                    <td class="price-pr">
+                                        <p>100.000 vnđ</p>
+                                    </td>
+                                    <td class="quantity-box">
+                                        <input type="number" size="4" value="1" min="0" step="1"
+                                               class="c-input-text qty text">
+                                    </td>
+                                    <td class="total-pr">
+                                        <p>120.000 vnđ</p>
+                                    </td>
+                                    <td class="remove-pr">
+                                        <a href="#">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="thumbnail-img">
+                                        <a href="shop-detail.html">
+                                            <img class="img-fluid" src="./wwwroot/images/img-pro-03.jpg" alt="" />
+                                        </a>
+                                    </td>
+                                    <td class="name-pr">
+                                        <a href="#">
+                                            Nho
+                                        </a>
+                                    </td>
+                                    <td class="price-pr">
+                                        <p>120.000 vnđ</p>
+                                    </td>
+                                    <td class="quantity-box">
+                                        <input type="number" size="4" value="1" min="0" step="1"
+                                               class="c-input-text qty text">
+                                    </td>
+                                    <td class="total-pr">
+                                        <p>120.000 vnđ</p>
+                                    </td>
+                                    <td class="remove-pr">
+                                        <a href="#">
+                                            <i class="fas fa-times"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row my-5">
+                <div class="col-lg-6 col-sm-6">
+                    <div class="coupon-box">
+                        <div class="input-group input-group-sm">
+                            <input class="form-control" placeholder="Nhập mã mua hàng" aria-label="Coupon code"
+                                   type="text">
+                            <div class="input-group-append">
+                                <button class="btn btn-theme" type="button">Nhập mã</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6">
+                    <div class="update-box">
+                        <input value="Update Cart" type="submit">
+                    </div>
+                </div>
+            </div>
+            <div class="row my-5">
+                <div class="col-lg-8 col-sm-12"></div>
+                <div class="col-lg-4 col-sm-12">
+                    <div class="order-box">
+                        <h3>Đơn hàng</h3>
+                        <div class="d-flex">
+                            <h4>Tổng tiền</h4>
+                            <div class="ml-auto font-weight-bold"> 360.000 Vnđ </div>
+                        </div>
+                        <div class="d-flex">
+                            <h4>Giảm giá</h4>
+                            <div class="ml-auto font-weight-bold"> 20.000 Vnđ </div>
+                        </div>
+                        <hr class="my-1">
+                        <div class="d-flex">
+                            <h4>Phiếu giảm giá </h4>
+                            <div class="ml-auto font-weight-bold"> 15.000 Vnđ </div>
+                        </div>
+                        <div class="d-flex">
+                            <h4>thuế</h4>
+                            <div class="ml-auto font-weight-bold"> 10.000 Vnđ </div>
+                        </div>
+                        <div class="d-flex">
+                            <h4>Phí vận chuyển</h4>
+                            <div class="ml-auto font-weight-bold"> Miễn phí </div>
+                        </div>
+                        <hr>
+                        <div class="d-flex gr-total">
+                            <h5>Tổng cộng</h5>
+                            <div class="ml-auto h5"> 300.000 Vnđ </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+                <div class="col-12 d-flex shopping-box">
+                    <a href="checkout.html"
+                       class="ml-auto btn hvr-hover">Thanh toán</a>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+<!-- End Cart -->
+<!-- Start Instagram Feed  -->
+@*<div class="instagram-box">
+        <div class="main-instagram owl-carousel owl-theme">
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-01.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-02.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-03.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-04.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-05.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-06.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-07.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-08.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-09.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="ins-inner-box">
+                    <img src="./wwwroot/images/instagram-img-05.jpg" alt="" />
+                    <div class="hov-in">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@
 <!-- End Instagram Feed  -->

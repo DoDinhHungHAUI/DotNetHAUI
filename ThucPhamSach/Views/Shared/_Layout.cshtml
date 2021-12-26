@@ -39,14 +39,19 @@
 
 <body>
     <!-- Register-->
+    <!-- Register-->
     @{
-        Html.RenderPartial("Register");
+        if (Session["idUser"] != null)
+        {
+            Html.RenderPartial("Register1");
+        }
+        else { Html.RenderPartial("Register"); }
     }
 
     <!--Header-->
 
     @{
-        Html.RenderAction("Header" , "Home");
+        Html.RenderAction("Header", "Home");
     }
 
     <!-- End Main Top -->
@@ -63,8 +68,8 @@
     <!-- End Top Search -->
 
     @RenderSection("Slider", required: false)
-    
-    @RenderSection("SliderDetail", required : false)
+
+    @RenderSection("SliderDetail", required: false)
 
     @RenderBody()
 
@@ -104,6 +109,8 @@
             window.location = elm.value + ".html";
         }
     </script>
+
+    @RenderSection("jsFooter", required: false)
 
 </body>
 

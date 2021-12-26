@@ -130,7 +130,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Assets\Enum\ThucPhamSachEnum.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DonHangsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomesController.cs" />
     <Compile Include="Areas\Admin\Controllers\CatalogManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DanhMucSanPhamsController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderManagerController.cs" />
@@ -145,6 +146,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\Common\ConfigHelper.cs" />
+    <Compile Include="Infrastructure\Core\CartItem.cs" />
     <Compile Include="Infrastructure\Core\PaginationSet.cs" />
     <Compile Include="Models\ChiTietHoaDon.cs" />
     <Compile Include="Models\DanhMucSanPham.cs" />
@@ -338,6 +340,7 @@
     <Content Include="wwwroot\js\bootsnav.js" />
     <Content Include="wwwroot\js\bootstrap-select.js" />
     <Content Include="wwwroot\js\bootstrap.min.js" />
+    <Content Include="wwwroot\js\cart.js" />
     <Content Include="wwwroot\js\contact-form-script.js" />
     <Content Include="wwwroot\js\custom.js" />
     <Content Include="wwwroot\js\form-validator.min.js" />
@@ -487,6 +490,10 @@
     <Content Include="Areas\Admin\Views\DanhMucSanPhams\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\DialogConfirm.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\ToastMessageSuccess.cshtml" />
+    <Content Include="Areas\Admin\Views\Homes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmim1.cshtml" />
+    <Content Include="Areas\Admin\Views\Homes\DangNhap.cshtml" />
+    <Content Include="Areas\Admin\Views\DonHangs\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -512,7 +519,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\Header.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
-    <Content Include="Views\Shared\Register.cshtml" />
     <Content Include="wwwroot\webfonts\fa-brands-400.eot" />
     <Content Include="wwwroot\webfonts\fa-brands-400.ttf" />
     <Content Include="wwwroot\webfonts\fa-brands-400.woff" />
@@ -525,14 +531,18 @@
     <Content Include="wwwroot\webfonts\fa-solid-900.ttf" />
     <Content Include="wwwroot\webfonts\fa-solid-900.woff" />
     <Content Include="wwwroot\webfonts\fa-solid-900.woff2" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\SignUp.cshtml" />
+    <Content Include="Views\Home\DangNhap.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
     <Content Include="Views\Product\ProductCategory.cshtml" />
     <Content Include="Views\Product\ProductDetail.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\Home\ChangeInfoUser.cshtml" />
-    <Content Include="Views\Home\ChangePasswordUser.cshtml" />
+    <Content Include="Views\Home\SuaThongTinTaiKhoan.cshtml" />
     <Content Include="Views\Product\Search.cshtml" />
+    <Content Include="Views\Shared\Register.cshtml" />
+    <Content Include="Views\Shared\Register1.cshtml" />
+    <Content Include="Views\Home\ChiTiet.cshtml" />
+    <Content Include="Views\Home\SuaMatKhau.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

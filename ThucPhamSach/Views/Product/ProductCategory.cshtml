@@ -38,8 +38,37 @@
                         <div class="col-12 col-sm-8 text-center text-sm-left">
                             <div class="toolbar-sorter-right">
                                 <span>Sắp xếp</span>
-                                <a href="@Url.Action("Search" , "Product" , new { sort = "giaban"})">Giá bán</a>
-                                <a href="@Url.Action("Search" , "Product" , new {sort = "tensp"})">Tên sản phẩm</a>
+                                 
+                                <div class="filter-data-condition">
+                                    <div class="text-sort" style="text-indent:15px">
+                                        @{
+                                            var text = "";
+                                            if (ViewBag.SapXep == "giaBan")
+                                            {
+                                                text = "Giá bán";
+                                            }
+                                            else
+                                            {
+                                                text = "Tên sản phẩm";
+                                            }
+                                        }
+                                        @text
+                                    </div>
+                                    <div class="btn-sort" id="btnSort">
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                </div>
+                                <div class="wrap-sort" id="wrap-sort">
+                                    <div class="sort-by-price">
+                                        <a class="link-sort" href="@Url.Action("ProductCategory" , "Product" , new { id = ViewBag.id , sort = "giaBan"})">Giá bán</a>
+                                    </div>
+                                    <div class="sort-by-name">
+                                        <a class="link-sort" href="@Url.Action("ProductCategory" , "Product" , new { id = ViewBag.id , sort = "tensanPham"})">Tên sản phẩm</a>
+                                    </div>
+                                </div>
+
+                                @*<a href="@Url.Action("Search" , "Product" , new { sort = "giaban"})">Giá bán</a>
+                                <a href="@Url.Action("Search" , "Product" , new {sort = "tensp"})">Tên sản phẩm</a>*@
                                 @*<select id="basic" class="selectpicker show-tick form-control">
                                         <option>
                                             <a href="@Url.Action("Search" , "Product" , new { sort = "giaban"})">Giá bán</a>
@@ -51,7 +80,7 @@
                                     </select>*@
                             </div>
                         </div>
-                        <div class="col-12 col-sm-4 text-center text-sm-right">
+                        @*<div class="col-12 col-sm-4 text-center text-sm-right">
                             <ul class="nav nav-tabs ml-auto">
                                 <li>
                                     <a class="nav-link active" href="#grid-view" data-toggle="tab">
@@ -64,7 +93,7 @@
                                     </a>
                                 </li>
                             </ul>
-                        </div>
+                        </div>*@
                     </div>
 
                     @if (Model.Count > 0)
@@ -103,7 +132,7 @@
                                                                     </a>
                                                                 </li>
                                                             </ul>
-                                                            <a class="cart" href="#">Thêm vào giỏ hàng</a>
+                                                            <a class="cart" href="/Them-Gio-Hang?maSp=@item.MaSP&soLuong=1">Thêm vào giỏ hàng</a>
                                                         </div>
                                                     </div>
                                                     <div class="why-text">
@@ -190,12 +219,12 @@
                         @if (Model.Page > 1)
                         {
                             <li class="page-item">
-                                <a class="?page=1 page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id ,page = 1})" aria-label="First">
+                                <a class="?page=1 page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id ,page = 1 , sort = ViewBag.SapXep})" aria-label="First">
                                     <i class="fas fa-angle-double-left"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id ,page = Model.Page - 1})" aria-label="Previous">
+                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id ,page = Model.Page - 1 , sort = ViewBag.SapXep})" aria-label="Previous">
                                     <i class="fas fa-angle-left"></i>
                                 </a>
                             </li>
@@ -204,23 +233,23 @@
                         {
                             if (Model.Page == i)
                             {
-                                <li class="active page-item"><a href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = i})" class="page-link" title="trang @i">@i</a></li>
+                                <li class="active page-item"><a href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = i ,sort = ViewBag.SapXep})" class="page-link" title="trang @i">@i</a></li>
                             }
                             else
                             {
-                                <li class="page-item"><a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = i})" title="Trang @i">@i</a></li>
+                                <li class="page-item"><a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = i ,sort = ViewBag.SapXep})" title="Trang @i">@i</a></li>
                             }
                         }
 
                         @if (Model.Page < Model.TotalPages)
                         {
                             <li>
-                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new { id = ViewBag.id , page = Model.Page + 1})" aria-label="Next">
+                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new { id = ViewBag.id , page = Model.Page + 1 ,sort = ViewBag.SapXep})" aria-label="Next">
                                     <i class="fas fa-angle-right"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = Model.TotalPages})" aria-label="Last">
+                                <a class="page-link" href="@Url.Action("ProductCategory" , "Product" , new {id = ViewBag.id , page = Model.TotalPages ,sort = ViewBag.SapXep})" aria-label="Last">
                                     <i class="fas fa-angle-double-right"></i>
                                 </a>
                             </li>
@@ -274,3 +303,15 @@
         font-weight: 700;
     }
 </style>
+
+<script>
+
+    var btnSort = document.getElementById("btnSort")
+    btnSort.addEventListener("click", function () {
+        var wrapSort = document.getElementById("wrap-sort")
+        wrapSort.classList.toggle("showWrapSort")
+    })
+
+
+
+</script>

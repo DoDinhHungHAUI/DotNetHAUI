@@ -64,7 +64,7 @@ namespace ThucPhamSach.Areas.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan taiKhoan = db.TaiKhoans.Find(id);
+            TaiKhoan taiKhoan = db.TaiKhoans.Where(t => t.MaTK == id).FirstOrDefault();
             if (taiKhoan == null)
             {
                 return HttpNotFound();

@@ -62,6 +62,45 @@
                 </table>
             </div>
             <!-- END DATA TABLE -->
+            <!-- Paging -->
+            <div class="paging-bar">
+                <div class="info-page">
+
+                </div>
+                <div class="list-page">
+                    <ul class="pagination" id="pagination">
+                        <li class="prev-first" id="prev-first" data-currentPage="1">
+                            <i class="fas fa-angle-double-left"></i>
+                        </li>
+                        <li class="prev" id="prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </li>
+                        @{
+                            for (int i = 1; i <= ViewBag.PageCount; i++)
+                            {
+                                if (i == 1)
+                                {
+                                    <li class="page-number active" data-currentPage="@i">@i</li>
+                                }
+                                else
+                                {
+                                    <li class="page-number" data-currentPage="@i">@i</li>
+                                }
+                            }
+                        }
+                        <li class="next" id="next">
+                            <i class="fas fa-chevron-right"></i>
+                        </li>
+                        <li class="next-last" id="next-last" data-currentPage="@ViewBag.PageCount">
+                            <i class="fas fa-angle-double-right"></i>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="record-per-page">
+                    <p>6 sản phẩm/trang</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>

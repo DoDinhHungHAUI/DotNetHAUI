@@ -1,7 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using ThucPhamSach.Infrastructure.Core;
 using ThucPhamSach.Models;
 
 namespace ThucPhamSach.Controllers
@@ -9,6 +11,8 @@ namespace ThucPhamSach.Controllers
     public class HomeController : Controller
     {
         thucphamsachDB db = new thucphamsachDB();
+
+        public static string CartSession = "cartSesstion";
 
         public ActionResult Index()
         {
@@ -181,7 +185,20 @@ namespace ThucPhamSach.Controllers
             var danhmucs = db.DanhMucSanPhams.ToList();
             return PartialView(danhmucs);
         }
-     
+
+        [ChildActionOnly]
+        public PartialViewResult HeaderCart()
+        {
+            var cart = Session[CartSession];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = (List<CartItem>)cart;
+            }
+
+            return PartialView(list);
+        }
+
         public ActionResult ChangePasswordUser()
         {
             return View();

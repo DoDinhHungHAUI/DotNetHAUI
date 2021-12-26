@@ -48,18 +48,9 @@
             <!-- Start Atribute Navigation -->
             <div class="attr-nav">
                 <ul>
-                    <li class="search">
-                        <a href="#">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="side-menu"  class="@(ViewContext.RouteData.Values["Action"].ToString() == "ShoppingCart" ? "active" : "")">
-                        @*<p style="position: relative;top: 26px;">
-                            <a  href="@Url.Action("Index","ShoppingCart")">
-                                <i class="fa fa-shopping-bag"></i>
-                                <span class="badge">0</span>
-                            </a>
-                        </p>*@
+                    <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                    <li class="side-menu" class="@(ViewContext.RouteData.Values["Action"].ToString() == "ShoppingCart" ? "active" : "")">
+                        @{ Html.RenderAction("HeaderCart", "Home");}
                         <p style="position: relative;top: 26px;">
                             <a href="@Url.Action("Index","ShoppingCart")">Giỏ Hàng</a>
                         </p>

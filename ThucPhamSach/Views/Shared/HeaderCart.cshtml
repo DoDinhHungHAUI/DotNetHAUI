@@ -1,0 +1,8 @@
+﻿@model List<ThucPhamSach.Infrastructure.Core.CartItem>
+
+<p style="position: relative;top: 26px;">
+    <a href="@Url.Action("Index","ShoppingCart")">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="badge">@Model.Count</span>
+    </a>
+</p>
